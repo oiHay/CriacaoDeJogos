@@ -5,10 +5,10 @@ public class EnemyDataSO : ScriptableObject
 {
     [Header("Prefab")]
     public GameObject enemyPrefab;
+    public ShootingPatternSO shootingPattern;
     
     [Header("Default values")]
     public float health;
-    public int projectileCount;
 
     [Header("Additional values per round")]
     public AnimationCurve healthPerRound;
