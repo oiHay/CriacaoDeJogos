@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
   spawnEntries:
   - enemyData: {fileID: 11400000, guid: 7f49907c6d8769640ab0922fb78968c0, type: 2}
-    quantity: 3
+    quantity: 9

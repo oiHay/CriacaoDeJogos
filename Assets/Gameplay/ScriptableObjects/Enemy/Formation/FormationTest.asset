@@ -15,5 +15,5 @@ MonoBehaviour:
   layoutType: 0
   rows: 3
   columns: 3
-  spacing: 1
+  spacing: 2
   formationRoot: {fileID: 0}
