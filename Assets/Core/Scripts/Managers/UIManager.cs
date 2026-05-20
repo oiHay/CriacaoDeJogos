@@ -4,8 +4,10 @@ public class UIManager : MonoBehaviour
 {
     [Header("Reference")]
     [SerializeField] private GameStatesEventSO gameStateEvent; // Referência direta o GameStateEventSO
-    
-    [Header("Panels")]
+
+    [Header("Panels")] 
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject pausePanel; // Refêrencia ao panel que deve aparecer durante o estado de Pause do jogo
     [SerializeField] private GameObject gameOverPanel;
 
