@@ -558,10 +558,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebdfd74650a9694aab4bf41e1e9dbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FormationController
-  _path: {fileID: 955929989}
-  _speed: 5
-  _layout: {fileID: 11400000, guid: 8a6fe9e3507e25f46a9564abac3f985e, type: 2}
+  testPath: {fileID: 955929989}
+  testSpeed: 3
+  testLayout: {fileID: 11400000, guid: 8a6fe9e3507e25f46a9564abac3f985e, type: 2}
   testWave: {fileID: 11400000, guid: 0bc996f950f588c44bde509dfec2fbdf, type: 2}
+  testGameStatesEvent: {fileID: 11400000, guid: 737c615fe7e262746aad2c391e2f1def, type: 2}
+  testRoundIndex: 1
 --- !u!4 &634403320
 Transform:
   m_ObjectHideFlags: 0
@@ -603,7 +605,7 @@ Transform:
   m_GameObject: {fileID: 642541638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 0, z: 2}
+  m_LocalPosition: {x: 11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -771,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 1223229051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 0, z: 8}
+  m_LocalPosition: {x: 11, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -849,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 1703703526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 8}
+  m_LocalPosition: {x: -11, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1402,7 +1404,7 @@ Transform:
   m_GameObject: {fileID: 2071681475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 2}
+  m_LocalPosition: {x: -11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

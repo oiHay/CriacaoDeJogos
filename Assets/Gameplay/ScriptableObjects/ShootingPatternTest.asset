@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911b913cac8b01641974342e4f8036ec, type: 3}
-  m_Name: Base
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
-  enemyPrefab: {fileID: 8768896728653050205, guid: 838501dd1e36efc42af7848dfeb78c51, type: 3}
-  shootingPattern: {fileID: 11400000, guid: a9b1eb507abbc2e48902154f1d281df3, type: 2}
-  health: 3
-  healthPerRound:
+  m_Script: {fileID: 11500000, guid: ab6e552a935b77d4684d9939443392db, type: 3}
+  m_Name: ShootingPatternTest
+  m_EditorClassIdentifier: Assembly-CSharp::ShootingPatternSO
+  projectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
+  projectileDamage: 0
+  projectileCount: 1
+  offsetX: 0
+  shootingInterval: 0
+  shootingReload: 2
+  projectileSpeedPerRound:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -39,4 +42,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  scoreValue: 0

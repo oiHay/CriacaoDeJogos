@@ -9,6 +9,7 @@ public class ProjectileBehaviour : MonoBehaviour
     private GameStatesEventSO _gameStatesEvent;
     private Rigidbody _rb;
     private Vector3 _velocityBeforePause;
+    private Vector3 _direction = Vector3.forward;
     
     private void Start()
     {
@@ -21,9 +22,14 @@ public class ProjectileBehaviour : MonoBehaviour
             _gameStatesEvent.OnRaised -= HandleStateChanged;
     }
 
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction;
+    }
+
     private void FixedUpdate()
     {
-        _rb.AddForce(Vector3.forward * projectileSpeed, ForceMode.Impulse);
+        _rb.AddForce(_direction* projectileSpeed, ForceMode.Impulse);
     }
     
     public void Initialize(GameStatesEventSO eventSO)
