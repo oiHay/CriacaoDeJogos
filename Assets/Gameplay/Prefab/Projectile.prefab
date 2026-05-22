@@ -171,4 +171,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollision
   explosionParticle: {fileID: 8967459722349791922, guid: e15a1ecbbbfff1648bf6908f0162b883, type: 3}
-  bounderX: 15
+  bounderX: 10

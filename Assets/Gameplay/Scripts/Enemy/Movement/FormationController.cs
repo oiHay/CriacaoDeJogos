@@ -8,7 +8,10 @@ public class FormationController : MonoBehaviour
     private FormationLayoutSO _layout;
     private float _speed;
     private int _currentWaypointIndex;
+    private int _enemyCount;
     private bool _isGameActive;
+
+    public Action OnFormationEmpty;
     
     // campos temporários de teste — remover depois
     [Header("Teste temporario")]
@@ -102,10 +105,27 @@ public class FormationController : MonoBehaviour
 
                 EnemyBehaviour behaviour = enemy.GetComponent<EnemyBehaviour>();
                 if (behaviour != null)
+                {
                     behaviour.Initialize(entry.enemyData, roundIndex, _gameStateEvent);
+                    behaviour.OnEnemyDestroyed += HandleEnemyDestroyed;
+                    _enemyCount++;
+                }
                 
                 slotIndex++;
             }
+        }
+    }
+
+    private void HandleEnemyDestroyed()
+    {
+        _enemyCount--;
+        
+        Debug.Log("Inimigo Destruído");
+
+        if (_enemyCount <= 0)
+        {
+            Debug.Log("Todos Destruído");
+            OnFormationEmpty?.Invoke();
         }
     }
 }

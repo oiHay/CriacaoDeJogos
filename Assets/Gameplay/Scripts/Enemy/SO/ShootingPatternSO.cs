@@ -8,6 +8,7 @@ public class ShootingPatternSO : ScriptableObject
 
     [Header("Default values")]
     public int projectileDamage;
+    public int projectileSpeedBase;
     public int projectileCount; // Quantos projéteis são instanciados por vez
     public float offsetX; // Quão distante entre si projéteis spawnados ao mesmo tempo estão
     public float shootingInterval; // Tempo entre um tiro e outro em sequência

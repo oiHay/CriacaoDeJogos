@@ -1,18 +1,9 @@
-using System;
 using UnityEngine;
 
-public class ProjectileCollision : MonoBehaviour
+public class ProjectileCollisionEnemy : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosionParticle;
-    [SerializeField] private float bounderX;
-
-    private float _projectileDamage;
-
-    public void Initialize(float damage)
-    {
-        _projectileDamage = damage;
-        Debug.Log($"Dano inicializado: {_projectileDamage}");
-    }
+    [SerializeField] private float bounderZ;
     
     private void Update()
     {
@@ -23,23 +14,16 @@ public class ProjectileCollision : MonoBehaviour
     {
         Vector3 pos = transform.position; // a variável pos pega os valores do transform.position
 
-        if (pos.z >= bounderX || pos.z <= -bounderX) // se pos.z for menor/maior/igual os valores limites
+        if (pos.z <= bounderZ) // se pos.z for menor que o valor limite
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
-        
-        pos.z = Mathf.Clamp(pos.z, -bounderX, bounderX);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Player"))
         {
-            EnemyBehaviour behaviour = other.GetComponent<EnemyBehaviour>();
-            
-            if (behaviour != null)
-                behaviour.TakeDamage(_projectileDamage);
-            
             CallParticle();
             DisableProjectile();
             Destroy(gameObject);

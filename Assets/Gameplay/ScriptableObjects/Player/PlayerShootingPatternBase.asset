@@ -10,23 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab6e552a935b77d4684d9939443392db, type: 3}
-  m_Name: ShootingPatternTest
+  m_Name: PlayerShootingPatternBase
   m_EditorClassIdentifier: Assembly-CSharp::ShootingPatternSO
-  projectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
-  projectileDamage: 0
+  projectilePrefab: {fileID: 950397177737167955, guid: 5fe2299f044df8948bd2ca96094cc8c2, type: 3}
+  projectileDamage: 3
+  projectileSpeedBase: 1
   projectileCount: 1
   offsetX: 0
   shootingInterval: 0
-  shootingReload: 2
+  shootingReload: 0.5
   projectileSpeedPerRound:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -35,7 +36,7 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0

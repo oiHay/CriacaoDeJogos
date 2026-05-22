@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,14 +10,14 @@ public class EnemyBehaviour : MonoBehaviour
     private float _currentHealth;
     private bool _isGameActive;
 
+    public Action OnEnemyDestroyed;
+
     public void Initialize(EnemyDataSO enemyData, int roundIndex, GameStatesEventSO gameStatesEvent)
     {
         _enemyData = enemyData;
         _roundIndex = roundIndex;
         _gameStateEvent = gameStatesEvent;
         _currentHealth = _enemyData.health + _enemyData.healthPerRound.Evaluate(_roundIndex);
-
-        StartCoroutine(ShootingLoop());
     }
 
     public void SetGameState(GameState state)
@@ -66,14 +67,22 @@ public class EnemyBehaviour : MonoBehaviour
 
         ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
         projectileBehaviour.SetDirection(Vector3.back);
-        projectileBehaviour.Initialize(_gameStateEvent);
+        projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeedPerRound.Evaluate(_roundIndex));
     }
 
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-        
-        if(_currentHealth <= 0)
+
+        if (_currentHealth <= 0)
+        {
+            OnEnemyDestroyed?.Invoke();
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        Debug.Log(_currentHealth);
     }
 }

@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
-    [SerializeField] private float projectileSpeed;
-    [SerializeField] private float projectileDamage;
-
     private GameStatesEventSO _gameStatesEvent;
     private Rigidbody _rb;
     private Vector3 _velocityBeforePause;
     private Vector3 _direction = Vector3.forward;
+    private float _projectileSpeed;
     
     private void Start()
     {
@@ -29,13 +27,14 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.AddForce(_direction* projectileSpeed, ForceMode.Impulse);
+        _rb.AddForce(_direction * _projectileSpeed, ForceMode.Impulse);
     }
     
-    public void Initialize(GameStatesEventSO eventSO)
+    public void Initialize(GameStatesEventSO eventSO, float speed)
     {
         _gameStatesEvent = eventSO;
         _gameStatesEvent.OnRaised += HandleStateChanged;
+        _projectileSpeed = speed;
     }
     
     private void HandleStateChanged(GameState state)

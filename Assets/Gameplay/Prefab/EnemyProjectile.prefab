@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5383418012330110496}
   - component: {fileID: 6054112939750508196}
   - component: {fileID: 2212570915384786584}
-  - component: {fileID: -4243885209950006818}
+  - component: {fileID: 2540572232662653221}
   m_Layer: 0
   m_Name: EnemyProjectile
-  m_TagString: Projectile
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileBehaviour
   projectileSpeed: 1
   projectileDamage: 0
---- !u!114 &-4243885209950006818
+--- !u!114 &2540572232662653221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 950397177737167955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2204a4576da17d4b9e3de449316fdfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 121c34dd3e82cc147a5bc3a0f3fe5f29, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollision
-  explosionParticle: {fileID: 8967459722349791922, guid: e15a1ecbbbfff1648bf6908f0162b883, type: 3}
-  bounderX: 15
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollisionEnemy
+  explosionParticle: {fileID: 8967459722349791922, guid: ac4a472cc15c6b745bc5d7a7c9c0a04c, type: 3}
+  bounderZ: -13
