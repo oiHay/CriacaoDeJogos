@@ -39,6 +39,7 @@ public class MenuUIManager : MonoBehaviour
         switch (buttonClicked)
         {
             case MainMenuButtons.Play:
+                StartGame();
                 break;
             
             case MainMenuButtons.Settings:
@@ -53,6 +54,11 @@ public class MenuUIManager : MonoBehaviour
                 Debug.Log("Button clicked wasn't implemented in MenuUIManager Method");
                 break;
         }
+    }
+
+    private void StartGame()
+    {
+        SceneLoaderManager.LoadNextInBuild();
     }
 
     private void OpenPanel(GameObject panel)
