@@ -3,6 +3,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Debug
+
+    [SerializeField] private bool debugMode;
+
+    private void DebugMessage(string message)
+    {
+        if(debugMode)
+            Debug.Log(message);
+    }
+
+    #endregion
+    
     [SerializeField] private GameStatesEventSO gameStatesEvent;  // Referencia direta ao GameStateEventSO, permite que o código saiba qual é o estado atual do jogo e que o mesmo possa ser alterado
 
     public  static GameManager Instance { get; private set; }
@@ -27,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     { 
-        Debug.Log(gameStatesEvent.gameStateAtual); // Debug para saber o estado atual do jogo
+        DebugMessage("Estado Atual do jogo: " + gameStatesEvent.gameStateAtual.ToString()); // Debug para saber o estado atual do jogo
 
         if (Input.GetKeyDown(KeyCode.P))
         {
