@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour
 {
     [SerializeField] private GameStatesEventSO gameStateEvent;
-    [SerializeField] private GameManager gameManager;
 
     private PlayerController _controller;
     private PlayerShootingBehaviour _shooting;
@@ -41,6 +40,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void HandlePlayerDeath()
     {
-        gameManager.ChangeState(GameState.GameOver);
+        GameManager.Instance.ChangeState(GameState.GameOver);
     }
 }

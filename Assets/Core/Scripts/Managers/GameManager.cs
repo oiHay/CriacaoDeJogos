@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameStatesEventSO gameStatesEvent;  // Referencia direta ao GameStateEventSO, permite que o código saiba qual é o estado atual do jogo e que o mesmo possa ser alterado
 
-    private static GameManager Instance { get; set; }
+    public  static GameManager Instance { get; private set; }
     private GameState _previousState;
 
     private void Awake() // Singleton, permite que o game object que possui esse código persista durante loads da cena

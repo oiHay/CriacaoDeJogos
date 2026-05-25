@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bdd35c3ab6583846a37a86d41b197a1, type: 3}
-  m_Name: RoundTest
+  m_Name: RoundSO
   m_EditorClassIdentifier: Assembly-CSharp::RoundSO
   waves:
-  - {fileID: 11400000, guid: 0bc996f950f588c44bde509dfec2fbdf, type: 2}
-  formationLayout: {fileID: 11400000, guid: 8a6fe9e3507e25f46a9564abac3f985e, type: 2}
-  formationSpeed: 5
+  - {fileID: 11400000, guid: 458139aa0e7ba4a4dbaadb06d809f133, type: 2}
+  - {fileID: 11400000, guid: 717b9a278ae5a3c48a36862ad8d2056c, type: 2}
+  waveInterval: 2

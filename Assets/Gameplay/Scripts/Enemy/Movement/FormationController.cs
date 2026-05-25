@@ -12,20 +12,6 @@ public class FormationController : MonoBehaviour
     private bool _isGameActive;
 
     public Action OnFormationEmpty;
-    
-    // campos temporários de teste — remover depois
-    [Header("Teste temporario")]
-    [SerializeField] private WaypointPath testPath;
-    [SerializeField] private float testSpeed;
-    [SerializeField] private FormationLayoutSO testLayout;
-    [SerializeField] private WaveSO testWave;
-    [SerializeField] private GameStatesEventSO testGameStatesEvent;
-    [SerializeField] private int testRoundIndex;
-
-    private void Start()
-    {
-        Initialize(testPath, testSpeed, testLayout, testWave, testGameStatesEvent, testRoundIndex);
-    }
 
     private void OnDestroy()
     {
@@ -33,7 +19,7 @@ public class FormationController : MonoBehaviour
             _gameStateEvent.OnRaised -= HandleStateChanged;
     }
 
-    private void Initialize(WaypointPath path, float speed, FormationLayoutSO layout, WaveSO wave, GameStatesEventSO gameStatesEvent, int roundIndex)
+    public void Initialize(WaypointPath path, float speed, FormationLayoutSO layout, WaveSO wave, GameStatesEventSO gameStatesEvent, int roundIndex)
     {
         _path = path;
         _speed = speed;
