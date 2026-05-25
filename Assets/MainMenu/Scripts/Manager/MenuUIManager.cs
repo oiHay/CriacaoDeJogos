@@ -15,14 +15,15 @@ public class MenuUIManager : MonoBehaviour
 
     #endregion
     
-    public static MenuUIManager Instance { get; private set; }
-    
-    public enum MainMenuButtons{ Play, Settings, Credits }
-    
     [Header("Panels")] 
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
 
+    public enum MainMenuButtons{ Play, Settings, Credits }
+    public static MenuUIManager Instance { get; private set; }
+
+    private GameObject _currentPanel;
+    
     private void Awake()
     {
         if(Instance == null)
@@ -33,6 +34,51 @@ public class MenuUIManager : MonoBehaviour
 
     public void ButtonClicked(MainMenuButtons buttonClicked)
     {
-        DebugMessage("Button Clicked " + buttonClicked.ToString());
+        DebugMessage("Button Clicked: " + buttonClicked.ToString());
+
+        switch (buttonClicked)
+        {
+            case MainMenuButtons.Play:
+                break;
+            
+            case MainMenuButtons.Settings:
+                OpenPanel(settingsPanel);
+                break;
+            
+            case MainMenuButtons.Credits:
+                OpenPanel(creditsPanel);
+                break;
+            
+            default:
+                Debug.Log("Button clicked wasn't implemented in MenuUIManager Method");
+                break;
+        }
+    }
+
+    private void OpenPanel(GameObject panel)
+    {
+        if (panel == null) return;
+        
+        if(_currentPanel != null)
+            _currentPanel.SetActive(false);
+
+        _currentPanel = panel;
+        _currentPanel.SetActive(true);
+    }
+
+    private void CloseCurrentPanel()
+    {
+        if(_currentPanel == null) return;
+        
+        _currentPanel.SetActive(false);
+        _currentPanel = null;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseCurrentPanel();
+        }
     }
 }
