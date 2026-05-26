@@ -38,7 +38,7 @@ public class MenuUIManager : MonoBehaviour
         switch (buttonClicked)
         {
             case MainMenuButtons.Play:
-                LevelLoaderManager.Instance.LoadNextLevel();
+                CustomSceneManager.LoadNextScene();
                 break;
             
             case MainMenuButtons.Settings:

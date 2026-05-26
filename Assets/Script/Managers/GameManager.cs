@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
     
-    [SerializeField] private bool isThisScenePlayable;
     [SerializeField] private GameStatesEventSO gameStatesEvent;  // Referencia direta ao GameStateEventSO, permite que o código saiba qual é o estado atual do jogo e que o mesmo possa ser alterado
 
     public  static GameManager Instance { get; private set; }
@@ -29,16 +28,15 @@ public class GameManager : MonoBehaviour
             Destroy(this);
             return;
         }
-
+        
         Instance = this;
+        
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        if (!isThisScenePlayable)
-            ChangeState(GameState.Start); // Quando o jogo é iniciado, o estado do jogo é alterado para start
-        else
-            ChangeState(GameState.Playing); // Quando o jogo é iniciado, o estado do jogo é alterado para start
+        ChangeState(GameState.Start); // Quando o jogo é iniciado, o estado do jogo é alterado para start
     }
 
     private void Update() 
@@ -46,6 +44,11 @@ public class GameManager : MonoBehaviour
         DebugMessage("Estado Atual do jogo: " + gameStatesEvent.gameStateAtual.ToString()); // Debug para saber o estado atual do jogo
         
         PauseGame();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ChangeState((GameState.Playing));
+        }
     }
 
     private void PauseGame()
