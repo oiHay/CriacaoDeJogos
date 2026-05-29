@@ -4,8 +4,8 @@ using UnityEngine;
 public class ProjectileDataSO : ScriptableObject
 {
     [Header("Prefab")]
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab; // Referência ao prefab do projétil
     
     [Header("Default values")]
-    public AnimationCurve speedCurve;
+    public AnimationCurve speedCurve; 
 }

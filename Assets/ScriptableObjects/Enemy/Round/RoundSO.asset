@@ -15,4 +15,4 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 458139aa0e7ba4a4dbaadb06d809f133, type: 2}
   - {fileID: 11400000, guid: 717b9a278ae5a3c48a36862ad8d2056c, type: 2}
-  waveInterval: 2
+  waveInterval: 5

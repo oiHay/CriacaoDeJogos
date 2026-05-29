@@ -2,38 +2,39 @@ using UnityEngine;
 
 public class ProjectileCollisionEnemy : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem explosionParticle;
-    [SerializeField] private float bounderZ;
+    [SerializeField] private ParticleSystem explosionParticle; // Referência para partícula de explosão
+    [SerializeField] private float bounderZ; // Variável que dita o valor limite de Z
     
     private void Update()
     {
         OutOfBounder();
     }
 
-    private void OutOfBounder()
+    private void OutOfBounder() 
     {
-        Vector3 pos = transform.position; // a variável pos pega os valores do transform.position
+        Vector3 pos = transform.position; // a variável pos pega os valores do transform.position do GameObject
 
         if (pos.z <= bounderZ) // se pos.z for menor que o valor limite
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // O GameObject é destruído
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player"))  // Se o GameObject tiver a tag player
         {
-            CallParticle();
-            DisableProjectile();
-            Destroy(gameObject);
+            CallParticle(); // Chama método que instancia a partícula
+            DisableProjectile(); // Chama método que desativa partícula após sua animação
+            Destroy(gameObject); // Destroi esse GameObject
         }
 
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("Projectile")) // Se o GameObject tiver a tag projectile
         {
-            CallParticle();
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            CallParticle(); // Chama método que instancia a partícula
+            DisableProjectile(); // Chama método que desativa partícula após sua animação
+            Destroy(other.gameObject); // Destroi o outro GameObject
+            Destroy(gameObject); // Destroi esse GameObject
         }
     }
 

@@ -9,69 +9,65 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private WaypointPath[] pathsPerWave;    // um path por wave
 
     private int _currentWaveIndex;
-    private FormationController _currentFormation;
+    private int _activeFormationCount;
 
     private void OnEnable() => gameStateEvent.OnRaised += HandleStateChanged;
     private void OnDisable() => gameStateEvent.OnRaised -= HandleStateChanged;
 
     private void HandleStateChanged(GameState state)
     {
-        if (state == GameState.Playing && _currentFormation == null)
+        if (state == GameState.Playing && _currentWaveIndex == 0 && _activeFormationCount == 0)
             StartCoroutine(StartRound());
     }
 
     private IEnumerator StartRound()
     {
         _currentWaveIndex = 0;
-        yield return StartCoroutine(SpawnWave());
+        yield return StartCoroutine(SpawnWavesSequence());
     }
 
-    private IEnumerator SpawnWave()
+    private IEnumerator SpawnWavesSequence()
     {
-        WaveSO currentWave = round.waves[_currentWaveIndex];
+        while (_currentWaveIndex < round.waves.Length)
+        {
+            SpawnWave(_currentWaveIndex);
+            _currentWaveIndex++;
 
-        GameObject formationObj = new GameObject("Formation");
-        formationObj.transform.position = pathsPerWave[_currentWaveIndex].GetWayPoint(0).position;
+            if (_currentWaveIndex < round.waves.Length)
+                yield return new WaitForSeconds(round.waveInterval);
+        }
+    }
 
-        _currentFormation = formationObj.AddComponent<FormationController>();
-        _currentFormation.OnFormationEmpty += HandleFormationEmpty;
-        _currentFormation.Initialize(
-            pathsPerWave[_currentWaveIndex],
+    private void SpawnWave(int waveIndex)
+    {
+        WaveSO currentWave = round.waves[waveIndex];
+
+        GameObject formationObj = new GameObject($"Formation_{waveIndex}");
+        formationObj.transform.position = pathsPerWave[waveIndex].GetWayPoint(0).position;
+
+        FormationController formation = formationObj.AddComponent<FormationController>();
+        formation.OnFormationEmpty += HandleFormationEmpty;
+        formation.Initialize(
+            pathsPerWave[waveIndex],
             currentWave.formationSpeed,
             currentWave.formationLayout,
             currentWave,
             gameStateEvent,
-            _currentWaveIndex
+            waveIndex
         );
 
-        yield return new WaitForSeconds(round.waveInterval);
-
-        if (_currentWaveIndex < round.waves.Length - 1)
-        {
-            _currentWaveIndex++;
-            yield return StartCoroutine(SpawnWave());
-        }
+        _activeFormationCount++;
     }
 
-    private void HandleFormationEmpty()
+    private void HandleFormationEmpty(FormationController formation)
     {
-        _currentFormation.OnFormationEmpty -= HandleFormationEmpty;
-        StopAllCoroutines();
-        Destroy(_currentFormation.gameObject);
-        _currentFormation = null;
+        formation.OnFormationEmpty -= HandleFormationEmpty;
+        Destroy(formation.gameObject);
+        _activeFormationCount--;
 
-        // verifica se ainda há waves no round
-        if (_currentWaveIndex < round.waves.Length - 1)
-        {
-            // ainda há waves — continua o round
-            _currentWaveIndex++;
-            StartCoroutine(SpawnWave());
-        }
-        else
-        {
-            // todas as waves concluídas — round termina
+        // round só termina quando todas as formações estiverem vazias
+        if (_activeFormationCount <= 0 && _currentWaveIndex >= round.waves.Length)
             GameManager.Instance.ChangeState(GameState.ChoosingPowerUp);
-        }
     }
 
     public void OnPowerUpChosen()

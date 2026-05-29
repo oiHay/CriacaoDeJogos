@@ -11,7 +11,7 @@ public class FormationController : MonoBehaviour
     private int _enemyCount;
     private bool _isGameActive;
 
-    public Action OnFormationEmpty;
+    public Action<FormationController> OnFormationEmpty;
 
     private void OnDestroy()
     {
@@ -27,6 +27,8 @@ public class FormationController : MonoBehaviour
         _gameStateEvent = gameStatesEvent;
 
         _gameStateEvent.OnRaised += HandleStateChanged;
+
+        _isGameActive = true;
 
         SpawnSlots(wave, roundIndex);
     }
@@ -93,6 +95,7 @@ public class FormationController : MonoBehaviour
                 if (behaviour != null)
                 {
                     behaviour.Initialize(entry.enemyData, roundIndex, _gameStateEvent);
+                    behaviour.SetGameState(GameState.Playing);
                     behaviour.OnEnemyDestroyed += HandleEnemyDestroyed;
                     _enemyCount++;
                 }
@@ -111,7 +114,7 @@ public class FormationController : MonoBehaviour
         if (_enemyCount <= 0)
         {
             Debug.Log("Todos Destruído");
-            OnFormationEmpty?.Invoke();
+            OnFormationEmpty?.Invoke(this);
         }
     }
 }

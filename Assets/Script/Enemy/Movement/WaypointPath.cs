@@ -1,8 +1,9 @@
-using System;
 using UnityEngine;
 
 public class WaypointPath : MonoBehaviour
 {
+    // Código para criar visualização entre os waypoints da cena, facilitando implementação dos mesmos e permitindo visualização do caminho feito pelos inimigos presentes na wave
+    
     [SerializeField] private Color pathColor = Color.yellow;
     
     public Transform GetWayPoint(int index)
