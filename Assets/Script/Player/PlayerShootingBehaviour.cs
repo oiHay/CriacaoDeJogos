@@ -1,10 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayerShootingBehaviour : MonoBehaviour
 {
-    [Header("References")]
+    [Header("References")] 
+    [SerializeField] private PlayerStatsRuntimeSO playerStatsSO;
     [SerializeField] private ShootingPatternSO pattern;
 
     [Header("Gun Parameters")]
@@ -23,44 +23,50 @@ public class PlayerShootingBehaviour : MonoBehaviour
         _isGameActive = state == GameState.Playing;
         StopAllCoroutines();
 
-        if (_isGameActive)
-            StartCoroutine(SpawnProjectile());
+        if (!_isGameActive) return;
+            
+        StartCoroutine(SpawnProjectile(pattern));
+
+        foreach (var extra in playerStatsSO.extraPatterns)
+        {
+            StartCoroutine(SpawnProjectile(extra));
+        }
     }
 
-    private IEnumerator SpawnProjectile()
+    private IEnumerator SpawnProjectile(ShootingPatternSO p)
     {
         while (_isGameActive)
         {
-            yield return new WaitForSeconds(pattern.shootingReload);
+            yield return new WaitForSeconds(p.shootingReload);
 
-            for (int i = 0; i < pattern.projectileCount; i++)
+            for (int i = 0; i < p.projectileCount; i++)
             {
-                SpawnSingleProjectile(i);
+                SpawnSingleProjectile(i, p);
 
-                if (pattern.projectileCount > 1)
-                    yield return new WaitForSeconds(pattern.shootingInterval);
+                if (p.projectileCount > 1)
+                    yield return new WaitForSeconds(p.shootingInterval);
             }
         }
     }
 
-    private void SpawnSingleProjectile(int index)
+    private void SpawnSingleProjectile(int index, ShootingPatternSO p)
     {
         float offset = 0f;
 
-        if (pattern.projectileCount > 1)
-            offset = (index - (pattern.projectileCount - 1) / 2.0f) * pattern.offsetX;
+        if (p.projectileCount > 1)
+            offset = (index - (p.projectileCount - 1) / 2.0f) * p.offsetX;
 
         Vector3 spawnPos = transform.position + new Vector3(offset, 0, projectileSpawnOffsetZ);
 
         GameObject projectile = Instantiate(
-            pattern.projectilePrefab,
+            p.projectilePrefab,
             spawnPos,
             Quaternion.Euler(90, 0, 0)
         );
 
-        float speed = pattern.projectileSpeedPerRound.Evaluate(0);
+        float speed = p.projectileSpeedPerRound.Evaluate(0);
         
         projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, speed);
-        projectile.GetComponent<ProjectileCollision>().Initialize(pattern.projectileDamage);
+        projectile.GetComponent<ProjectileCollision>().Initialize(p.projectileDamage, playerStatsSO.explosionChance);
     }
 }

@@ -7,7 +7,7 @@ public class ProjectileCollision : MonoBehaviour
 
     private float _projectileDamage; 
 
-    public void Initialize(float damage)
+    public void Initialize(float damage, float explosionChance)
     {
         _projectileDamage = damage;
     }

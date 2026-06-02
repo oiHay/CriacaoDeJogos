@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
+    public int maxHealth = 3;
 
+    public event Action<int, int> OnHealthChanged;
     public event Action OnDeath;
     private int _currentHealth;
 
@@ -13,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
 
         if (_currentHealth <= 0)
         {
@@ -23,6 +25,6 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke();
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

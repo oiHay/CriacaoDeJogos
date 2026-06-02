@@ -13,6 +13,8 @@ public class MenuUIManager : MonoBehaviour
     }
 
     #endregion
+
+    [SerializeField] private PlayerStatsRuntimeSO playerStats;
     
     [Header("Panels")] 
     [SerializeField] private GameObject settingsPanel;
@@ -38,6 +40,7 @@ public class MenuUIManager : MonoBehaviour
         switch (buttonClicked)
         {
             case MainMenuButtons.Play:
+                playerStats.Reset();
                 CustomSceneManager.LoadNextScene();
                 break;
             
