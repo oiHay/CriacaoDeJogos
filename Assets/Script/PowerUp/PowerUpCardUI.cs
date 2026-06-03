@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PowerUpCardUI : MonoBehaviour
+public class PowerUpCardUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text nameText;
@@ -24,7 +25,7 @@ public class PowerUpCardUI : MonoBehaviour
         if (descriptionText == null) Debug.LogError("PowerUpCardUI: descriptionText not assigned!", this);
     }
 
-    public void OnCardClicked()
+    public void OnPointerClick(PointerEventData eventData)
     {
         PowerUpManager.Instance.OnPowerUpChosen(_data);
     }

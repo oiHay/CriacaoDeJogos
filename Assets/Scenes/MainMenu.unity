@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuUIManager
   debugMode: 0
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: 527758083e50f404dad1bfb8d6cb8997, type: 2}
   settingsPanel: {fileID: 1477017416}
   creditsPanel: {fileID: 224868028}
 --- !u!1 &1477017416
