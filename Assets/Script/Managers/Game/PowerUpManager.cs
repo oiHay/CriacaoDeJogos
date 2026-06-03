@@ -31,8 +31,7 @@ public class PowerUpManager : MonoBehaviour
     public void OnPowerUpChosen(PowerUpSO chosen)
     {
         playerStats.Apply(chosen);
-        GameManager.Instance.ChangeState(GameState.Playing);
-        // Botar aqui para trocar de cena
+        CustomSceneManager.LoadNextScene();
     }
 
     private PowerUpSO[] PickRandom(int count)

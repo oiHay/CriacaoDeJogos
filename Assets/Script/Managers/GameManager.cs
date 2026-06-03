@@ -30,13 +30,8 @@ public class GameManager : MonoBehaviour
         }
         
         Instance = this;
-        
-        DontDestroyOnLoad(gameObject);
-    }
 
-    private void Start()
-    {
-        ChangeState(GameState.Start); // Quando o jogo é iniciado, o estado do jogo é alterado para start
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update() 
