@@ -4,10 +4,12 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour
 {
     [SerializeField] private GameStatesEventSO gameStateEvent;
+    [SerializeField] private PlayerStatsRuntimeSO playerStats;
 
     private PlayerController _controller;
     private PlayerShootingBehaviour _shooting;
     private PlayerHealth _health;
+    private PlayerDash _dash;
 
     private void Awake()
     {
@@ -16,6 +18,9 @@ public class PlayerStateMachine : MonoBehaviour
         _health = GetComponent<PlayerHealth>();
         
         _shooting.Initialize(gameStateEvent);
+        
+        _dash = GetComponent<PlayerDash>();
+        if (_dash != null) _dash.enabled = playerStats.hasDash;
     }
 
     private void OnEnable()
@@ -36,6 +41,7 @@ public class PlayerStateMachine : MonoBehaviour
         
         _controller.SetGameState(state);
         _shooting.SetGameState(state);
+        _dash?.SetGameState(state);
     }
 
     private void HandlePlayerDeath()

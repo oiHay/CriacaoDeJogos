@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc228c91453aad4f9ade820453e7d72, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsRuntimeSO
-  hasDash: 0
+  hasDash: 1
   explosionChance: 0
   extraPatterns: []
