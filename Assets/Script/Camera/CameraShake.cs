@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CameraBehaviour : MonoBehaviour
+public class CameraShake : MonoBehaviour
 {
     [SerializeField] private float shakeDuration = 0.3f;
     [SerializeField] private float shakeMagnitude = 0.2f;

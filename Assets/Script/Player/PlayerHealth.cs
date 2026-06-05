@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private CameraBehaviour cameraBehaviour;
+    [SerializeField] private CameraShake cameraShake;
 
     [Header("Health Values")]
     public int maxHealth = 3;
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            cameraBehaviour?.Shake();
+            cameraShake?.Shake();
             StartCoroutine(InvincibilityRoutine());
         }
     }

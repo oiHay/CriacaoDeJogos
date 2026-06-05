@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff27aa5104fea242b19f215b1f7bc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  cameraBehaviour: {fileID: 1834799523}
+  cameraShake: {fileID: 1834799523}
   maxHealth: 5
   invincibilityDuration: 2
   blinkInterval: 0.1
@@ -3418,9 +3418,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1834799518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ede44ada81c95340bb9c9a6a5b60e3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 452a48a0176772e4ea08a97412a53fcc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraBehaviour
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
   shakeDuration: 0.3
   shakeMagnitude: 0.2
 --- !u!1 &1872999874
