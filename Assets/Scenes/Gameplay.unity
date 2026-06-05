@@ -1043,7 +1043,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff27aa5104fea242b19f215b1f7bc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 3
+  cameraBehaviour: {fileID: 1834799523}
+  maxHealth: 5
+  invincibilityDuration: 2
+  blinkInterval: 0.1
 --- !u!114 &624411373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,6 +3283,7 @@ GameObject:
   - component: {fileID: 1834799520}
   - component: {fileID: 1834799519}
   - component: {fileID: 1834799522}
+  - component: {fileID: 1834799523}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3405,6 +3409,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1834799523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834799518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ede44ada81c95340bb9c9a6a5b60e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraBehaviour
+  shakeDuration: 0.3
+  shakeMagnitude: 0.2
 --- !u!1 &1872999874
 GameObject:
   m_ObjectHideFlags: 0
