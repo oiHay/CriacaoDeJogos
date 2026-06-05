@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("References")] 
+    [SerializeField] private CameraBehaviour cameraBehaviour;
+
+    [Header("Health Values")]
     public int maxHealth = 3;
     [SerializeField] private float invincibilityDuration = 2f;
     [SerializeField] private float blinkInterval = 0.1f;
@@ -35,7 +39,10 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
         else
+        {
+            cameraBehaviour?.Shake();
             StartCoroutine(InvincibilityRoutine());
+        }
     }
 
     private IEnumerator InvincibilityRoutine()
