@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private CameraShake cameraShake;
     [SerializeField] private GameObject particlePrefab;
     [SerializeField] private ParticleSystem hitParticle;
     
@@ -88,7 +87,6 @@ public class EnemyBehaviour : MonoBehaviour
         else
         {
             Instantiate(hitParticle, transform.position + Vector3.back * 0.5f, hitParticle.transform.rotation);
-            cameraShake?.Shake();
         }
     }
     
