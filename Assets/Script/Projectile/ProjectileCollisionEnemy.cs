@@ -24,7 +24,6 @@ public class ProjectileCollisionEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))  // Se o GameObject tiver a tag player
         {
-            CallParticle(); // Chama método que instancia a partícula
             DisableProjectile(); // Chama método que desativa partícula após sua animação
             Destroy(gameObject); // Destroi esse GameObject
         }

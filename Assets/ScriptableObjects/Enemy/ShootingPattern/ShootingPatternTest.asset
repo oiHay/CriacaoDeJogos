@@ -15,9 +15,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
   projectileDamage: 0
   projectileSpeedBase: 1
-  projectileCount: 1
-  offsetX: 0
-  shootingInterval: 0
+  projectileCount: 2
+  offsetX: 1
+  shootingInterval: 0.5
   shootingReload: 2
   projectileSpeedPerRound:
     serializedVersion: 2

@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e937f33b1f28ad6448a662d28e54c42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
+  particlePrefab: {fileID: 4714553403420993954, guid: 54fc6238bd168194ab3c6524a3f97179, type: 3}

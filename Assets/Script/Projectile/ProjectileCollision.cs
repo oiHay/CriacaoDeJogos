@@ -36,12 +36,11 @@ public class ProjectileCollision : MonoBehaviour
             if (behaviour != null)
                 behaviour.TakeDamage(_projectileDamage); // Para poder invocar a action TakeDamage, que garante que o enemy receba dano
             
-            CallParticle(); // Chama método que instancia a partícula
             DisableProjectile(); // Chama método que desativa partícula após sua animação
             Destroy(gameObject); // Destroi esse GameObject
         }
 
-        if (other.CompareTag("Projectile"))
+        if (other.CompareTag("EnemyProjectile"))
         {
             CallParticle(); // Chama método que instancia a partícula
             DisableProjectile(); // Chama método que desativa partícula após sua animação

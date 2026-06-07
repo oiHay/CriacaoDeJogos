@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject particlePrefab;
+    
     private EnemyDataSO _enemyData;
     private GameStatesEventSO _gameStateEvent;
     private int _roundIndex;
@@ -76,8 +78,23 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
+            CallParticle();
             OnEnemyDestroyed?.Invoke();
             Destroy(gameObject);
+        }
+    }
+    
+    private void CallParticle()
+    {
+        if(particlePrefab == null) return;
+        
+        GameObject spawnedParticleObj =  Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
+
+        ParticleSystem ps = spawnedParticleObj.GetComponent<ParticleSystem>();
+
+        if (ps != null)
+        { 
+            ps.Play();
         }
     }
 }
