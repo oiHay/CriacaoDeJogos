@@ -153,4 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e937f33b1f28ad6448a662d28e54c42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
+  cameraShake: {fileID: 0}
   particlePrefab: {fileID: 4714553403420993954, guid: 54fc6238bd168194ab3c6524a3f97179, type: 3}
+  hitParticle: {fileID: 5711231189016753595, guid: 8bc4f4f7b40504c41ba7052d7931fb0a, type: 3}

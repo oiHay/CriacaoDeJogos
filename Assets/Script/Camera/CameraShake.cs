@@ -12,7 +12,6 @@ public class CameraShake : MonoBehaviour
 
     public void Shake()
     {
-        Debug.Log("Is shaking!");
         StartCoroutine(ShakeRoutine());
     }
 

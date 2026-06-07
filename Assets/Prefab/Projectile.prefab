@@ -168,5 +168,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2204a4576da17d4b9e3de449316fdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollision
-  explosionParticle: {fileID: 8967459722349791922, guid: e15a1ecbbbfff1648bf6908f0162b883, type: 3}
+  explosionParticle: {fileID: 5670104516051297052, guid: 2f5e49614f9b10e4cbc6d79fc988fb7e, type: 3}
   bounderZ: 9

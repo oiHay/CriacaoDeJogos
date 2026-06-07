@@ -64,9 +64,12 @@ public class PlayerShootingBehaviour : MonoBehaviour
             Quaternion.Euler(90, 0, 0)
         );
 
-        float speed = p.projectileSpeedPerRound.Evaluate(0);
+        float speed = p.projectileSpeed;
         
-        projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, speed);
-        projectile.GetComponent<ProjectileCollision>().Initialize(p.projectileDamage, playerStatsSO.explosionChance);
+        if (projectile.TryGetComponent(out ProjectileBehaviour pb))
+            pb.Initialize(_gameStateEvent, p.projectileSpeed);
+
+        if (projectile.TryGetComponent(out ProjectileCollision pc))
+            pc.Initialize(p.projectileDamage, playerStatsSO.explosionChance);
     }
 }

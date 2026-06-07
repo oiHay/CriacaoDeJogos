@@ -17,13 +17,7 @@ public class SpawnManager : MonoBehaviour
     private void HandleStateChanged(GameState state)
     {
         if (state == GameState.Playing && _currentWaveIndex == 0 && _activeFormationCount == 0)
-            StartCoroutine(StartRound());
-    }
-
-    private IEnumerator StartRound()
-    {
-        _currentWaveIndex = 0;
-        yield return StartCoroutine(SpawnWavesSequence());
+            StartCoroutine(SpawnWavesSequence());
     }
 
     private IEnumerator SpawnWavesSequence()

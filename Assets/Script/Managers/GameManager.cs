@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
 
     private void Update() 
     { 
-        DebugMessage("Estado Atual do jogo: " + gameStatesEvent.gameStateAtual.ToString()); // Debug para saber o estado atual do jogo
-        
         PauseGame();
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -65,5 +63,7 @@ public class GameManager : MonoBehaviour
     {
         _previousState = gameStatesEvent.gameStateAtual;
         gameStatesEvent.Raise(newState); // Método que permite que o gameManager mude o valor do estado atual da cena
+        
+        DebugMessage("Estado Atual do jogo: " + gameStatesEvent.gameStateAtual.ToString()); // Debug para saber o estado atual do jogo
     }
 }

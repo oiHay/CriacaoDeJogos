@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private ParticleSystem hitParticle;
 
     [Header("Health Values")]
     public int maxHealth = 3;
@@ -40,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            Instantiate(hitParticle, transform.position + Vector3.forward * 0.5f, hitParticle.transform.rotation);
             cameraShake?.Shake();
             StartCoroutine(InvincibilityRoutine());
         }
@@ -63,7 +66,22 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        CallParticle();
         OnDeath?.Invoke();
         Destroy(gameObject);
+    }
+
+    private void CallParticle()
+    {
+        if (particlePrefab == null) return;
+
+        GameObject spawnedParticleObjs =
+            Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
+
+        ParticleSystem ps = spawnedParticleObjs.GetComponent<ParticleSystem>();
+        
+        if (ps != null)
+            ps.Play();
+
     }
 }

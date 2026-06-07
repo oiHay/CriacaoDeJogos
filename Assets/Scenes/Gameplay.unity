@@ -1044,6 +1044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   cameraShake: {fileID: 1834799523}
+  particlePrefab: {fileID: 4714553403420993954, guid: 71b5093ce3dd5b2499c1fdb6978c25f7, type: 3}
+  hitParticle: {fileID: 5670104516051297052, guid: 2f5e49614f9b10e4cbc6d79fc988fb7e, type: 3}
   maxHealth: 5
   invincibilityDuration: 2
   blinkInterval: 0.1

@@ -58,6 +58,8 @@ public class ProjectileCollision : MonoBehaviour
 
     private void CallParticle()
     {
+        if (explosionParticle == null) return;
+        
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
 }

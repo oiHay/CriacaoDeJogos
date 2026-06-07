@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    [Header("References")] 
+    [SerializeField] private CameraShake cameraShake;
     [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private ParticleSystem hitParticle;
     
     private EnemyDataSO _enemyData;
     private GameStatesEventSO _gameStateEvent;
@@ -69,7 +72,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
         projectileBehaviour.SetDirection(Vector3.back);
-        projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeedPerRound.Evaluate(_roundIndex));
+        projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeed);
     }
 
     public void TakeDamage(float damage)
@@ -82,6 +85,11 @@ public class EnemyBehaviour : MonoBehaviour
             OnEnemyDestroyed?.Invoke();
             Destroy(gameObject);
         }
+        else
+        {
+            Instantiate(hitParticle, transform.position + Vector3.back * 0.5f, hitParticle.transform.rotation);
+            cameraShake?.Shake();
+        }
     }
     
     private void CallParticle()
@@ -93,8 +101,6 @@ public class EnemyBehaviour : MonoBehaviour
         ParticleSystem ps = spawnedParticleObj.GetComponent<ParticleSystem>();
 
         if (ps != null)
-        { 
             ps.Play();
-        }
     }
 }

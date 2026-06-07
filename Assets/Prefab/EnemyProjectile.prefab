@@ -156,8 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74926d1197d16d74a91f44b0411f764d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileBehaviour
-  projectileSpeed: 1
-  projectileDamage: 0
 --- !u!114 &2540572232662653221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,5 +168,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121c34dd3e82cc147a5bc3a0f3fe5f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollisionEnemy
-  explosionParticle: {fileID: 8967459722349791922, guid: ac4a472cc15c6b745bc5d7a7c9c0a04c, type: 3}
+  explosionParticle: {fileID: 5711231189016753595, guid: 8bc4f4f7b40504c41ba7052d7931fb0a, type: 3}
   bounderZ: -13
