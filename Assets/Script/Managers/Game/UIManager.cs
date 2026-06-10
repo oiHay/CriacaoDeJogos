@@ -2,6 +2,18 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    #region Debug
+
+        [SerializeField] private bool debugMode;
+
+        private void DebugMessage(string message)
+        {
+            if(debugMode)
+                Debug.Log(message);
+        }
+
+    #endregion
+    
     [Header("Reference")]
     [SerializeField] private GameStatesEventSO gameStateEvent; // Referência direta o GameStateEventSO
 
@@ -9,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel; // Refêrencia ao panel que deve aparecer durante o estado de Pause do jogo
     [SerializeField] private GameObject choosingPowerUp;
     [SerializeField] private GameObject gameOverPanel;
-
+    
     private void OnEnable()
     {
         gameStateEvent.OnRaised += HandleStateChanged; // Inscreve esse script como ouvinte do GameStateEventSO enquanto o objeto estiver ativo
@@ -24,8 +36,12 @@ public class UIManager : MonoBehaviour
     {
         if (pausePanel == null || choosingPowerUp == null || gameOverPanel == null) return; // Proteção contra referências destruídas, evita o erro MissingReferenceException
         
-        pausePanel.SetActive(state == GameState.Paused); // Se o estado do jogo for "Paused", o pausePanel deve estar ativo
+        pausePanel.SetActive(state == GameState.Paused);
         choosingPowerUp.SetActive(state == GameState.ChoosingPowerUp);
         gameOverPanel.SetActive(state == GameState.GameOver);
     }
+
+    public void ResumeGame()   => GameManager.Instance.ResumeGame();
+    public void ResetScene()   => GameManager.Instance.ResetScene();
+    public void GoToMainMenu() => GameManager.Instance.GoToMainMenu();
 }

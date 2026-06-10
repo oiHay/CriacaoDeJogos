@@ -37,11 +37,6 @@ public class GameManager : MonoBehaviour
     private void Update() 
     { 
         PauseGame();
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ChangeState((GameState.Playing));
-        }
     }
 
     private void PauseGame()
@@ -58,6 +53,15 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void ResumeGame()
+    {
+        ChangeState(_previousState);
+    }
+
+    // Scene navigation — instance wrappers so buttons can reference them in the Inspector
+    public void ResetScene() => CustomSceneManager.Reset();
+    public void GoToMainMenu() => CustomSceneManager.MainMenu();
 
     public void ChangeState(GameState newState) // público para permitir que outros scripts alterem o estado
     {

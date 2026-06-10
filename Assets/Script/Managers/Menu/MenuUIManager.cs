@@ -15,50 +15,18 @@ public class MenuUIManager : MonoBehaviour
     #endregion
 
     [SerializeField] private PlayerStatsRuntimeSO playerStats;
-    
-    [Header("Panels")] 
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject creditsPanel;
-
-    public enum MainMenuButtons{ Play, Settings, Credits }
-    public static MenuUIManager Instance { get; private set; }
 
     private GameObject _currentPanel;
-    
-    private void Awake()
+
+    // Called by the Play button via UIButton or Button.OnClick
+    public void Play()
     {
-        if(Instance == null)
-            Instance = this;
-        else
-            DebugMessage("There are more than one MenuUIManager in this scene");
+        playerStats.Reset();
+        CustomSceneManager.LoadNextScene();
     }
 
-    public void ButtonClicked(MainMenuButtons buttonClicked)
-    {
-        DebugMessage("Button Clicked: " + buttonClicked.ToString());
-
-        switch (buttonClicked)
-        {
-            case MainMenuButtons.Play:
-                playerStats.Reset();
-                CustomSceneManager.LoadNextScene();
-                break;
-            
-            case MainMenuButtons.Settings:
-                OpenPanel(settingsPanel);
-                break;
-            
-            case MainMenuButtons.Credits:
-                OpenPanel(creditsPanel);
-                break;
-            
-            default:
-                Debug.Log("Button clicked wasn't implemented in MenuUIManager Method");
-                break;
-        }
-    }
-
-    private void OpenPanel(GameObject panel)
+    // Called by Settings/Credits buttons — pass the panel to open directly
+    public void OpenPanel(GameObject panel)
     {
         if (panel == null) return;
         
