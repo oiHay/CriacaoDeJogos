@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: English
   m_EditorClassIdentifier: Assembly-CSharp::LanguageDataSO
   languages: 0
-  entries: []
+  entries:
+  - key: btn_play
+    value: Play
+  - key: btn_settings
+    value: Settings
+  - key: btn_credits
+    value: Credits

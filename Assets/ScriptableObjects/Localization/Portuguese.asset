@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8033a4d9364654d99fbf51755d295a, type: 3}
   m_Name: Portuguese
   m_EditorClassIdentifier: Assembly-CSharp::LanguageDataSO
-  languages: 0
-  entries: []
+  languages: 1
+  entries:
+  - key: btn_play
+    value: Jogar
+  - key: btn_settings
+    value: "Configura\xE7\xF5es"
+  - key: btn_credits
+    value: "Cr\xE9ditos"
