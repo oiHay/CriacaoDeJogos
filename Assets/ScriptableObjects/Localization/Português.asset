@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f8033a4d9364654d99fbf51755d295a, type: 3}
-  m_Name: Portuguese
+  m_Name: "Portugu\xEAs"
   m_EditorClassIdentifier: Assembly-CSharp::LanguageDataSO
   languages: 1
   entries:
@@ -20,3 +20,15 @@ MonoBehaviour:
     value: "Configura\xE7\xF5es"
   - key: btn_credits
     value: "Cr\xE9ditos"
+  - key: Settings_Master_Volume
+    value: Volume Master
+  - key: Settings_Music_Volume
+    value: "Volume da M\xFAsica"
+  - key: Settings_SFX_Volume
+    value: Volume dos Efeitos
+  - key: btn_back
+    value: Voltar
+  - key: btn_reset
+    value: Reiniciar
+  - key: btn_menu
+    value: Menu

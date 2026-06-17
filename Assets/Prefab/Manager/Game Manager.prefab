@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbee75c1dd1c0142b6b2a83b594b3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocalizationManager
-  debugMode: 0
+  debugMode: 1
   availableLanguages:
   - {fileID: 11400000, guid: 2c01dc003b45d2e488d561f97ee8c503, type: 2}
-  - {fileID: 11400000, guid: 9ba415ac123eee84189ca854d0db99b3, type: 2}
-  defaultLanguage: 1
+  - {fileID: 11400000, guid: 7cc66ae95acf1bf4bbde0745984a5021, type: 2}
+  defaultLanguage: 0
 --- !u!1 &4373124269455271058
 GameObject:
   m_ObjectHideFlags: 0

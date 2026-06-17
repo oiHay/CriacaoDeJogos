@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameStatesEventSO gameStateEvent; // Referência direta o GameStateEventSO
 
     [Header("Panels")] 
-    [SerializeField] private GameObject pausePanel; // Refêrencia ao panel que deve aparecer durante o estado de Pause do jogo
+    [SerializeField] private GameObject settingsPanel; // Refêrencia ao panel que deve aparecer durante o estado de Pause do jogo
     [SerializeField] private GameObject choosingPowerUp;
     [SerializeField] private GameObject gameOverPanel;
     
@@ -34,9 +34,9 @@ public class UIManager : MonoBehaviour
 
     private void HandleStateChanged(GameState state) // Método que serve como ouvinte do GameStateEventSO, toda vez que o GameState muda de valor, esse código verifica para qual mudou e faz o que for preciso referente a mudança
     {
-        if (pausePanel == null || choosingPowerUp == null || gameOverPanel == null) return; // Proteção contra referências destruídas, evita o erro MissingReferenceException
+        if (settingsPanel == null || choosingPowerUp == null || gameOverPanel == null) return; // Proteção contra referências destruídas, evita o erro MissingReferenceException
         
-        pausePanel.SetActive(state == GameState.Paused);
+        settingsPanel.SetActive(state == GameState.Paused);
         choosingPowerUp.SetActive(state == GameState.ChoosingPowerUp);
         gameOverPanel.SetActive(state == GameState.GameOver);
     }

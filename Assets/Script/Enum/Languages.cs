@@ -2,5 +2,5 @@
 public enum Languages
 {
     English,
-    Portuguese
+    Português
 }

@@ -20,3 +20,15 @@ MonoBehaviour:
     value: Settings
   - key: btn_credits
     value: Credits
+  - key: Settings_Master_Volume
+    value: Master Volume
+  - key: Settings_Music_Volume
+    value: Music Volume
+  - key: Settings_SFX_Volume
+    value: SFX Volume
+  - key: btn_back
+    value: Back
+  - key: btn_reset
+    value: Reset
+  - key: btn_menu
+    value: Menu

@@ -21,7 +21,7 @@ public class LocalizationManager : MonoBehaviour
     [Header("Languages")] 
     [SerializeField] private List<LanguageDataSO> availableLanguages;
 
-    [SerializeField] private Languages defaultLanguage = Languages.Portuguese;
+    [SerializeField] private Languages defaultLanguage = Languages.English;
 
     public event Action OnLanguageChanged;
     public Languages CurrentLanguage { get; private set; }
