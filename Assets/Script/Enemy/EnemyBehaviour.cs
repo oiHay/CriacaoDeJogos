@@ -74,6 +74,18 @@ public class EnemyBehaviour : MonoBehaviour
         projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeed);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Projectile")) return;
+
+        ProjectileCollision projectile = other.GetComponent<ProjectileCollision>();
+        
+        if (projectile != null)
+            TakeDamage(projectile.Damage);
+        
+        Destroy(other.gameObject);
+    }
+
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;

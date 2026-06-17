@@ -6,6 +6,7 @@ public class ProjectileCollision : MonoBehaviour
     [SerializeField] private float bounderZ; // Variável que dita o valor limite de Z
 
     private float _projectileDamage; 
+    public float Damage => _projectileDamage;
 
     public void Initialize(float damage, float explosionChance)
     {
@@ -29,17 +30,6 @@ public class ProjectileCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) // Se o GameObject tiver a tag enemy
-        {
-            EnemyBehaviour behaviour = other.GetComponent<EnemyBehaviour>(); // Cria referência ao componente EnemyBehaviour 
-            
-            if (behaviour != null)
-                behaviour.TakeDamage(_projectileDamage); // Para poder invocar a action TakeDamage, que garante que o enemy receba dano
-            
-            DisableProjectile(); // Chama método que desativa partícula após sua animação
-            Destroy(gameObject); // Destroi esse GameObject
-        }
-
         if (other.CompareTag("EnemyProjectile"))
         {
             CallParticle(); // Chama método que instancia a partícula

@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Projectile
   - Enemy
   - EnemyProjectile
   - Transition
+  - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX

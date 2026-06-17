@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a7451903e61cc44b2dfe1edd13aca5, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: Assembly-CSharp::BossDataSO
+  maxHealth: 100
+  fanProjectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
+  basicChargeTime: 1
+  fanProjectileCount: 5
+  fanAngle: 60
+  fanProjectileSpeed: 2
+  circleIndicatorPrefab: {fileID: 1169641794994647381, guid: 6ec3e52f2fd6cdc469fa3dd8834f6138, type: 3}
+  laserPrefab: {fileID: 1058801789872476763, guid: 93138fa5224a4e14ca68a8d4bc297b55, type: 3}
+  intermediateChargeTime: 1.5
+  circleChaseTime: 3
+  circleChaseSpeed: 2
+  laserDuration: 1
+  laserDamage: 1
+  bombIndicatorPrefab: {fileID: 1169641794994647381, guid: 6ec3e52f2fd6cdc469fa3dd8834f6138, type: 3}
+  bombExplosionPrefab: {fileID: 5886104631618253843, guid: a02c9e692f90a2f49834232487c4fc38, type: 3}
+  hardChargeTime: 1.5
+  bombCount: 4
+  bombWarningTime: 2
+  bombDamage: 1
+  spawnAreaX: {x: -8, y: 8}
+  spawnAreaZ: {x: -8, y: 8}
+  phase2ReloadMultiplier: 0.75
+  phase3ReloadMultiplier: 0.5
+  baseReloadTime: 3
+  timeBetweenAttacks: 0.5
