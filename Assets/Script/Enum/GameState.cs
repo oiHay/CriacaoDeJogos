@@ -6,5 +6,6 @@ public enum GameState
     Paused,
     Playing,
     ChoosingPowerUp,
-    GameOver
+    GameOver,
+    Tutorial
 }
