@@ -17,7 +17,7 @@ MonoBehaviour:
   basicChargeTime: 1
   fanProjectileCount: 5
   fanAngle: 60
-  fanProjectileSpeed: 2
+  fanProjectileSpeed: 0.5
   circleIndicatorPrefab: {fileID: 1169641794994647381, guid: 6ec3e52f2fd6cdc469fa3dd8834f6138, type: 3}
   laserPrefab: {fileID: 1058801789872476763, guid: 93138fa5224a4e14ca68a8d4bc297b55, type: 3}
   intermediateChargeTime: 1.5

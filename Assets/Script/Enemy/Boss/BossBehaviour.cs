@@ -30,7 +30,6 @@ public class BossBehaviour : MonoBehaviour
 
     private float _currentHealth;
     private BossPhase _currentPhase = BossPhase.Phase1;
-    private bool _isGameActive;
     private Transform _playerTransform;
 
     private void Awake()
@@ -44,20 +43,28 @@ public class BossBehaviour : MonoBehaviour
 
     private void HandleStateChanged(GameState state)
     {
-        _isGameActive = state == GameState.Playing;
-
-        if (!_isGameActive)
-            StopAllCoroutines();
-        else
-            StartCoroutine(AttackLoop());
+        switch (state)
+        {
+            case GameState.Playing:
+                StopAllCoroutines();
+                StartCoroutine(AttackLoop());
+                break;
+            
+            case GameState.Paused:
+                StopAllCoroutines();
+                break;
+        }
     }
 
     #region AttackLoop
 
     private IEnumerator AttackLoop()
     {
-        yield return StartCoroutine(ExecutePhaseAttacks());
-        yield return new WaitForSeconds(GetCurrentReload());
+        while (true)
+        {
+            yield return StartCoroutine(ExecutePhaseAttacks());
+            yield return new WaitForSeconds(GetCurrentReload());
+        }
     }
 
     private IEnumerator ExecutePhaseAttacks()
@@ -152,9 +159,25 @@ public class BossBehaviour : MonoBehaviour
 
         if (circle != null)
         {
-            Instantiate(bossData.laserPrefab, circle.transform.position, Quaternion.Euler(90,0,0));
+            SpawnLaser(transform.position, circle.transform.position);
             Destroy(circle);
         }
+    }
+    
+    private void SpawnLaser(Vector3 from, Vector3 to)
+    {
+        Vector3 dir = to - from;
+        float distance = dir.magnitude;
+
+        GameObject laser = Instantiate(
+            bossData.laserPrefab,
+            (from + to) / 2f,
+            Quaternion.FromToRotation(Vector3.up, dir.normalized)
+        );
+
+        Vector3 scale = laser.transform.localScale;
+        scale.y = distance / 2f;
+        laser.transform.localScale = scale;
     }
 
     #endregion
@@ -211,18 +234,14 @@ public class BossBehaviour : MonoBehaviour
     private void CheckPhaseTransition()
     {
         BossPhase newPhase = _currentHealth > bossData.maxHealth * (2f / 3f) ? BossPhase.Phase1 :
-            _currentHealth > bossData.maxHealth * (1f / 3f) ? BossPhase.Phase2 :
-            BossPhase.Phase3;
+                             _currentHealth > bossData.maxHealth * (1f / 3f) ? BossPhase.Phase2 :
+                             BossPhase.Phase3;
 
         if (newPhase == _currentPhase) return;
 
         _currentPhase = newPhase;
         OnPhaseChanged?.Invoke(_currentPhase);
         DebugMessage("Boss phase changed to: " + _currentPhase);
-
-        StopAllCoroutines();
-        if (_isGameActive)
-            StartCoroutine(AttackLoop());
     }
 
     private void Die()
