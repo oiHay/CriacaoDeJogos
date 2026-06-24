@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBounder()
     {
+        if (!_isGameActive) return;
+        
         Vector3 pos = transform.position; // a variável pos pega os valores do transform.position
         Vector3 vel = _playerRb.linearVelocity; // a variável vel pega os valores da velocidade do rb
 
