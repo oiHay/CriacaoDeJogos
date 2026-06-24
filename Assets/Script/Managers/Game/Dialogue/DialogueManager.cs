@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -37,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
         _currentLine = 0;
         dialoguePanel.SetActive(true);
+        GameManager.Instance.ChangeState(GameState.Tutorial);
         ShowLine(_currentLine);
     }
 
@@ -84,5 +84,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         _lines = null;
+        GameManager.Instance.ChangeState(GameState.Playing);
     }
 }
