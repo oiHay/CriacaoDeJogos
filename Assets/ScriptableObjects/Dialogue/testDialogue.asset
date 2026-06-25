@@ -15,9 +15,7 @@ MonoBehaviour:
   localizations:
   - language: 0
     lines:
-    - Hi!
     - This is a test
   - language: 1
     lines:
-    - Oi!
     - "Isso \xE9 um teste"

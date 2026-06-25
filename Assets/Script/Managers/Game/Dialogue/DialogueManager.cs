@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
+    public static event Action OnDialogueEnded;
 
     [Header("UI")] 
     [SerializeField] private GameObject dialoguePanel;
@@ -84,6 +86,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         _lines = null;
+        OnDialogueEnded?.Invoke();
+        
         GameManager.Instance.ChangeState(GameState.Playing);
     }
 }

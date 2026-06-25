@@ -3,19 +3,24 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [SerializeField] private GameStatesEventSO gameStateEvent;
+    
     [SerializeField] private DialogueSO dialogue;
     [SerializeField] private float delay = 0f;
-    [SerializeField] private bool triggerOnStart = false;
 
-    private void Start()
-    {
-        if (triggerOnStart)
-            Trigger();
-    }
+    private bool _hasTriggered;
+    
+    private void OnEnable() => gameStateEvent.OnRaised += HandleStateChanged;
 
-    public void Trigger()
+    private void OnDisable() => gameStateEvent.OnRaised -= HandleStateChanged;
+
+    private void HandleStateChanged(GameState state)
     {
-        StartCoroutine(TriggerAfterDelay());
+        if (state == GameState.Tutorial && !_hasTriggered)
+        {
+            _hasTriggered = true;
+            StartCoroutine(TriggerAfterDelay());
+        }
     }
 
     private IEnumerator TriggerAfterDelay()

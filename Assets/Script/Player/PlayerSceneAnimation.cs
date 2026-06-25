@@ -11,6 +11,10 @@ public class PlayerSceneAnimation : MonoBehaviour
     [SerializeField] private float delayToStart = 0.5f;
     [SerializeField] private Ease ease = Ease.OutCubic;
 
+    [Header("Exit")] [SerializeField] private float exitZ = 12f;
+    [SerializeField] private float exitDuration = 1.5f;
+    [SerializeField] private Ease exitEase = Ease.InCubic;
+
     private void Start()
     {
         StartCoroutine(EntryAnim());
@@ -20,14 +24,18 @@ public class PlayerSceneAnimation : MonoBehaviour
     {
         yield return new WaitForSeconds(delayToStart);
         
-        DialogueTrigger dialogueTrigger = FindAnyObjectByType<DialogueTrigger>().GetComponent<DialogueTrigger>();
-        
         Vector3 startPos = transform.position;
         startPos.z = offScreenZ;
         transform.position = startPos;
 
         transform.DOMoveZ(entryZ, duration)
-            .SetEase(ease)
-            .OnComplete(dialogueTrigger.Trigger);
+            .SetEase(ease);
+    }
+
+    public void PlayExitAnimation()
+    {
+        transform.DOMoveZ(exitZ, exitDuration)
+            .SetEase(exitEase)
+            .OnComplete(() => CustomSceneManager.LoadNextScene());
     }
 }
