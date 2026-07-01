@@ -87,7 +87,5 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         _lines = null;
         OnDialogueEnded?.Invoke();
-        
-        GameManager.Instance.ChangeState(GameState.Playing);
     }
 }
