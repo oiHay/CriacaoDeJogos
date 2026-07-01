@@ -72,4 +72,11 @@ public class PlayerShootingBehaviour : MonoBehaviour
         if (projectile.TryGetComponent(out ProjectileCollision pc))
             pc.Initialize(p.projectileDamage, playerStatsSO.explosionChance);
     }
+
+    public void SetPattern(ShootingPatternSO newPattern)
+    {
+        pattern = newPattern;
+        if (_isGameActive)
+            SetGameState(GameState.Playing);
+    }
 }

@@ -21,11 +21,16 @@ public class PlayerHealth : MonoBehaviour
     private bool _isInvulnerable;
     private MeshRenderer _meshRenderer;
 
+    private bool _indestructible;
+    private float _regenDelay = 1.5f;
+    
     private void Start()
     {
         _currentHealth = maxHealth;
         _meshRenderer = GetComponent<MeshRenderer>();
     }
+    
+    public void SetIndestructible(bool value) => _indestructible = value;
 
     public void SetInvulnerable(bool value) => _isInvulnerable = value;
     
@@ -48,6 +53,15 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void HealToFull() => StartCoroutine(HealAfterDelay());
+
+    private IEnumerator HealAfterDelay()
+    {
+        yield return new WaitForSeconds(_regenDelay);
+        _currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
+    }
+    
     private IEnumerator InvincibilityRoutine()
     {
         _isInvulnerable = true;
@@ -66,6 +80,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if (_indestructible)
+        {
+            HealToFull();
+            return;
+        }
+        
         CallParticle();
         OnDeath?.Invoke();
         Destroy(gameObject);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialEnemyController : MonoBehaviour
 {
    [Header("Entry Animation")] 
+   [SerializeField] private Vector3 entryTargetPosition;
    [SerializeField] private float offScreenZ = 20f;
    [SerializeField] private float entryDuration = 1.5f;
    [SerializeField] private Ease entryEase = Ease.OutCubic;
@@ -20,15 +21,11 @@ public class TutorialEnemyController : MonoBehaviour
    private EnemyBehaviour _enemyBehaviour;
    private int _currentWaypointIndex;
    private bool _isActive;
-   private Vector3 _entryTargetPosition;
 
    private void Awake()
    {
       _enemyBehaviour = GetComponentInChildren<EnemyBehaviour>();
-      _enemyBehaviour.gameObject.SetActive(false);
       _enemyBehaviour.Initialize(enemyData, 0, gameStatesEvent);
-      _entryTargetPosition = transform.position;
-      gameStatesEvent.OnRaised += HandleStateChanged;
    }
 
    private void OnDestroy()
@@ -39,6 +36,8 @@ public class TutorialEnemyController : MonoBehaviour
 
    private void HandleStateChanged(GameState state)
    {
+      if (!gameObject.activeInHierarchy) return;
+      
       _isActive = state == GameState.Playing;
       _enemyBehaviour.SetGameState(state);
    }
@@ -68,16 +67,16 @@ public class TutorialEnemyController : MonoBehaviour
    {
       gameStatesEvent.OnRaised += HandleStateChanged;
 
-      Vector3 startPos = _entryTargetPosition;
+      Vector3 startPos = entryTargetPosition;
       startPos.z = offScreenZ;
       transform.position = startPos;
 
-      transform.DOMoveZ(_entryTargetPosition.z, entryDuration)
+      transform.DOMoveZ(entryTargetPosition.z, entryDuration)
          .SetEase(entryEase)
          .OnComplete(() => onComplete?.Invoke());
    }
 
    public EnemyBehaviour GetBehaviour() => _enemyBehaviour;
-
-   public void ShowEnemy() => _enemyBehaviour.gameObject.SetActive(true);
+   
+   public void SetPattern(ShootingPatternSO pattern) => _enemyBehaviour.SetPattern(pattern);
 }

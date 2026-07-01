@@ -14,7 +14,10 @@ public class EnemyBehaviour : MonoBehaviour
     private float _currentHealth;
     private bool _isGameActive;
 
+    private ShootingPatternSO _patternOverride;
+
     public Action OnEnemyDestroyed;
+    public Action OnShot;
 
     public void Initialize(EnemyDataSO enemyData, int roundIndex, GameStatesEventSO gameStatesEvent)
     {
@@ -34,9 +37,11 @@ public class EnemyBehaviour : MonoBehaviour
             StartCoroutine(ShootingLoop());
     }
 
+    public void SetPattern(ShootingPatternSO newPattern) => _patternOverride = newPattern;
+
     private IEnumerator ShootingLoop()
     {
-        ShootingPatternSO pattern = _enemyData.shootingPattern;
+        ShootingPatternSO pattern = _patternOverride ?? _enemyData.shootingPattern;
 
         while (_isGameActive)
         {
@@ -44,7 +49,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             for (int i = 0; i < pattern.projectileCount; i++)
             {
-                SpawnProjectile(i);
+                SpawnProjectile(i, pattern);
 
                 if (pattern.projectileCount > 1)
                     yield return new WaitForSeconds(pattern.shootingInterval);
@@ -52,12 +57,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void SpawnProjectile(int index)
+    private void SpawnProjectile(int index, ShootingPatternSO pattern)
     {
-        ShootingPatternSO pattern = _enemyData.shootingPattern;
+        OnShot?.Invoke();
 
         float offset = 0f;
-
         if (pattern.projectileCount > 1)
             offset = (index - (pattern.projectileCount - 1) / 2.0f) * pattern.offsetX;
 
@@ -69,8 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
             pattern.projectilePrefab.transform.rotation
         );
 
-        ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
-        projectileBehaviour.SetDirection(Vector3.back);
+        projectile.GetComponent<ProjectileBehaviour>().SetDirection(Vector3.back);
         projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeed);
     }
 

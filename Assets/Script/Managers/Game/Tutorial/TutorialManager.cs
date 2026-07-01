@@ -5,17 +5,29 @@ public class TutorialManager : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private PlayerSceneAnimation sceneAnimation;
+    [SerializeField] private PlayerShootingBehaviour playerShooting;
+    [SerializeField] private TutorialEnemyController tutorialEnemy;
+    [SerializeField] private PlayerHealth playerHealth;
+    
+    [Header("Shooting Patterns")] 
+    [SerializeField] private ShootingPatternSO emptyPattern;
+    [SerializeField] private ShootingPatternSO enemyShootPattern;
+    [SerializeField] private ShootingPatternSO playerShootPattern;
 
-    [Header("Phase 1")] 
+    [Header("Phase 1 - Move")] 
     [SerializeField] private DialogueSO phase1DialogueEntry;
     [SerializeField] private DialogueSO phase1DialogueObjective;
     [SerializeField] private TutorialObjective phase1Objective;
 
-    [Header("Phase 2")]
+    [Header("Phase 2 - Dodge")]
     [SerializeField] private DialogueSO phase2DialogueEntry;
     [SerializeField] private DialogueSO phase2DialogueObjective;
-    [SerializeField] private TutorialEnemyController phase2Enemy;
     [SerializeField] private TutorialObjective phase2Objective;
+    
+    [Header("Phase 3 - Kill")]
+    [SerializeField] private DialogueSO phase3DialogueEntry;
+    [SerializeField] private DialogueSO phase3DialogueObjective;
+    [SerializeField] private TutorialObjective phase3Objective;
 
     private bool _dialogueEnded;
     private bool _objectiveCompleted;
@@ -46,6 +58,10 @@ public class TutorialManager : MonoBehaviour
         DialogueManager.Instance.StartDialogue(phase1DialogueObjective);
         yield return new WaitUntil(() => _dialogueEnded);
         
+        // Define o Shooting Pattern
+        playerShooting.SetPattern(emptyPattern);
+        tutorialEnemy.SetPattern(emptyPattern);
+        
         // Jogo começa
         GameManager.Instance.ChangeState(GameState.Playing);
         
@@ -75,13 +91,10 @@ public class TutorialManager : MonoBehaviour
         
         DialogueManager.Instance.StartDialogue(phase2DialogueEntry);
         yield return new WaitUntil(() => _dialogueEnded);
-
-        TutorialEnemyController enemy = FindAnyObjectByType<TutorialEnemyController>();
-        enemy.ShowEnemy();
         
         // Inimigo entra na cena
         bool enemyEntryDone = false;
-        phase2Enemy.PlayEntryAnimation(() => enemyEntryDone = true);
+        tutorialEnemy.PlayEntryAnimation(() => enemyEntryDone = true);
         yield return new WaitUntil(() => enemyEntryDone);
         
         // Diálogo de objetivo
@@ -89,6 +102,11 @@ public class TutorialManager : MonoBehaviour
         
         DialogueManager.Instance.StartDialogue(phase2DialogueObjective);
         yield return new WaitUntil(() => _dialogueEnded);
+        
+        // Define o Shooting Pattern
+        playerShooting.SetPattern(emptyPattern);
+        tutorialEnemy.SetPattern(enemyShootPattern);
+        playerHealth.SetIndestructible(true);
         
         // Jogo começa
         GameManager.Instance.ChangeState(GameState.Playing);
@@ -102,6 +120,8 @@ public class TutorialManager : MonoBehaviour
          
         // Volta estado de tutorial
         GameManager.Instance.ChangeState(GameState.Tutorial);
+        playerHealth.SetIndestructible(false);
+        playerHealth.HealToFull();
         
         // Player volta a posição central
         bool returnDone = false;
@@ -109,7 +129,41 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => returnDone);
         
         // Passa para próxima fase do tutorial
-        //StartCoroutine(Phase3Routine());
+        StartCoroutine(Phase3Routine());
+    }
+
+    private IEnumerator Phase3Routine()
+    {
+        // Diálogo de entrada
+        _dialogueEnded = false;
+        
+        DialogueManager.Instance.StartDialogue(phase3DialogueEntry);
+        yield return new WaitUntil(() => _dialogueEnded);
+        
+        // Define o Shooting Pattern
+        playerShooting.SetPattern(playerShootPattern);
+        tutorialEnemy.SetPattern(emptyPattern);
+        
+        // Jogo começa
+        GameManager.Instance.ChangeState(GameState.Playing);
+        
+        // Objetivo
+        _objectiveCompleted = false;
+        phase3Objective.OnCompleted += OnObjectiveCompleted;
+        phase3Objective.StartObjective();
+        yield return new WaitUntil(() => _objectiveCompleted);
+        phase3Objective.OnCompleted -= OnObjectiveCompleted;
+         
+        // Volta estado de tutorial
+        GameManager.Instance.ChangeState(GameState.Tutorial);
+        
+        // Player volta a posição central
+        bool returnDone = false;
+        sceneAnimation.PlayerReturnAnimation(() => returnDone = true);
+        yield return new WaitUntil(() => returnDone);
+        
+        // Passa para próxima fase do tutorial
+        //StartCoroutine(Phase4Routine());
     }
 
     private void OnObjectiveCompleted() => _objectiveCompleted = true;
