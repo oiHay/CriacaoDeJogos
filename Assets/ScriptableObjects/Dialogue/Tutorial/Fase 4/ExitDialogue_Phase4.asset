@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8f64f1b09abd27448ea5f6837581b24, type: 3}
-  m_Name: testDialogue
+  m_Name: ExitDialogue_Phase4
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   localizations:
-  - language: 0
-    lines:
-    - This is a test
   - language: 1
     lines:
-    - "Isso \xE9 um teste"
+    - "Agora, cadete, \xE9 contigo"
+    - "Vai l\xE1 e mostra pra gente como \xE9 que se faz!"
+  - language: 0
+    lines:
+    - Now, cadet, it's up to you
+    - Go on and show us how it's done!

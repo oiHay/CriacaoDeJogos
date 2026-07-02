@@ -7,5 +7,8 @@ public class SceneInitializer : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.ChangeState(initialState);
+        
+        if (initialState == GameState.EnterLevel)
+            PlayerSceneAnimation.Instance.PlayEnterAnimation(() => GameManager.Instance.ChangeState(GameState.Playing));
     }
 }

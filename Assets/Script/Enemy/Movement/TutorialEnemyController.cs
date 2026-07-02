@@ -37,6 +37,7 @@ public class TutorialEnemyController : MonoBehaviour
    private void HandleStateChanged(GameState state)
    {
       if (!gameObject.activeInHierarchy) return;
+      if (_enemyBehaviour == null) return;
       
       _isActive = state == GameState.Playing;
       _enemyBehaviour.SetGameState(state);

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f64f1b09abd27448ea5f6837581b24, type: 3}
+  m_Name: EntryDialogue_Phase4
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  localizations:
+  - language: 0
+    lines:
+    - Yeah, cadet, you actually had a great teacher.
+    - "I\u2019m so proud of myself!"
+    - "But don\u2019t go thinking it\u2019s going to be that easy, huh?!"
+    - Like Mom used to say, 'if you want it easy, sit on the pudding'!
+    - "But don\u2019t worry, cadet, I\u2019ll give you a little help\u2026"
+    - Pick out a decent upgrade for that old clunker of yours!
+  - language: 1
+    lines:
+    - "\xC9, cadete, voc\xEA at\xE9 que teve um \xF3timo professor"
+    - "To t\xE3o orgulhoso de mim!"
+    - "Mas vai achando que vai ser facinho assim n\xE3o, hein?!"
+    - "J\xE1 dizia mam\xE3e: quer moleza, senta no pudim!"
+    - "Mas pode ficar tranquilo, cadete, vou te dar uma colher de ch\xE1..."
+    - Escolhe um upgrade decente para essa sua caranga

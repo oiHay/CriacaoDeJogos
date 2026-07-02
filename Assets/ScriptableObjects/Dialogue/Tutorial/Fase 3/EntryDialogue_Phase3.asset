@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f64f1b09abd27448ea5f6837581b24, type: 3}
+  m_Name: EntryDialogue_Phase3
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  localizations:
+  - language: 1
+    lines:
+    - "Rapadura \xE9 doce mas n\xE3o \xE9 mole, n\xE3o, hein, cadete?!"
+    - "Gostei de ver, rebolar se t\xE1 sabendo..."
+    - "Mas o que eu quero saber \xE9: voc\xEA tem sangue frio pra mandar esses fedorentos
+      pro buraco?"
+    - "Mostra do que voc\xEA \xE9 capaz, cadete, detona com esse patinho dando sopa!"
+  - language: 0
+    lines:
+    - No pain, no gain, right, cadet?!
+    - I see... You know how to move it move it...
+    - 'But what I want to know is: do you have the nerve to send those stinkers to
+      hell?'
+    - "Show us what you\u2019re made of, cadet. Take down that easy target!"

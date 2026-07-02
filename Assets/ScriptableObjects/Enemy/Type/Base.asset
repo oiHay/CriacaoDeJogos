@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Base
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
   enemyPrefab: {fileID: 8768896728653050205, guid: 838501dd1e36efc42af7848dfeb78c51, type: 3}
-  shootingPattern: {fileID: 11400000, guid: a9b1eb507abbc2e48902154f1d281df3, type: 2}
+  shootingPattern: {fileID: 11400000, guid: d17ce69e369616a4b85d5bea120dc367, type: 2}
   health: 3
   healthPerRound:
     serializedVersion: 2

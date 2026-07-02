@@ -18,4 +18,4 @@ MonoBehaviour:
   projectileCount: 1
   offsetX: 0
   shootingInterval: 0
-  shootingReload: 0.7
+  shootingReload: 1.2

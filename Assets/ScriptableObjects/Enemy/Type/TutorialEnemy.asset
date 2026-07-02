@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
   enemyPrefab: {fileID: 8768896728653050205, guid: 838501dd1e36efc42af7848dfeb78c51, type: 3}
   shootingPattern: {fileID: 11400000, guid: d17ce69e369616a4b85d5bea120dc367, type: 2}
-  health: 1
+  health: 3
   healthPerRound:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0

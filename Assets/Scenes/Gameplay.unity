@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6441a7329aa23804a9b04b7125374a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneInitializer
-  initialState: 2
+  initialState: 6
 --- !u!1 &420434260
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,57 +701,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Waypoint
   gizmoRadius: 0.3
   gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
---- !u!1 &731053202
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 731053203}
-  - component: {fileID: 731053204}
-  m_Layer: 0
-  m_Name: PowerUpManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &731053203
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731053202}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1963678486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &731053204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731053202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f84ce18ed40fa49ac171d759c1f4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
-  gameStateEvent: {fileID: 11400000, guid: 737c615fe7e262746aad2c391e2f1def, type: 2}
-  playerStats: {fileID: 11400000, guid: 527758083e50f404dad1bfb8d6cb8997, type: 2}
-  allPowerUps:
-  - {fileID: 11400000, guid: d3bf6a233a83b45448a42ca1c271ec89, type: 2}
-  - {fileID: 11400000, guid: d3bf6a233a83b45448a42ca1c271ec89, type: 2}
-  - {fileID: 11400000, guid: d3bf6a233a83b45448a42ca1c271ec89, type: 2}
-  panelController: {fileID: 1041014485}
 --- !u!1 &794593292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,22 +1044,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8668717001484916551, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
   m_PrefabInstance: {fileID: 1176639317063165523}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1041014481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2900550443551257542, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
-  m_PrefabInstance: {fileID: 1176639317063165523}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1041014485 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7223565678652038672, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
-  m_PrefabInstance: {fileID: 1176639317063165523}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041014481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12429782b2f74904797e2495573bdf23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerUpPanelController
 --- !u!1 &1125371265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,7 +1137,7 @@ MonoBehaviour:
   debugMode: 0
   gameStateEvent: {fileID: 11400000, guid: 737c615fe7e262746aad2c391e2f1def, type: 2}
   settingsPanel: {fileID: 989510525}
-  choosingPowerUp: {fileID: 1041014481}
+  choosingPowerUp: {fileID: 300147137}
   gameOverPanel: {fileID: 300147137}
 --- !u!1 &1223229051
 GameObject:
@@ -2076,7 +2009,6 @@ Transform:
   - {fileID: 1173119784}
   - {fileID: 8760833}
   - {fileID: 1456836227}
-  - {fileID: 731053203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2071681475
@@ -2230,7 +2162,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1173119785}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2900550443551257542, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
@@ -2313,7 +2246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1782962705820078296, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1782962705820078296, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2347,6 +2280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5603514609853704429, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
+      propertyPath: pattern
+      value: 
+      objectReference: {fileID: 11400000, guid: d502c1e5c10517f4f928fa12f2eeafe5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

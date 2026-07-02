@@ -61,11 +61,7 @@ public class SpawnManager : MonoBehaviour
 
         // round só termina quando todas as formações estiverem vazias
         if (_activeFormationCount <= 0 && _currentWaveIndex >= round.waves.Length)
-            GameManager.Instance.ChangeState(GameState.ChoosingPowerUp);
-    }
-
-    public void OnPowerUpChosen()
-    {
-        GameManager.Instance.ChangeState(GameState.Playing);
+            PlayerSceneAnimation.Instance.PlayExitAnimation(CustomSceneManager.LoadNextScene);
+            //GameManager.Instance.ChangeState(GameState.ChoosingPowerUp);
     }
 }

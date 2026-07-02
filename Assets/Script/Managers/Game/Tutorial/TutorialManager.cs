@@ -26,16 +26,21 @@ public class TutorialManager : MonoBehaviour
     
     [Header("Phase 3 - Kill")]
     [SerializeField] private DialogueSO phase3DialogueEntry;
-    [SerializeField] private DialogueSO phase3DialogueObjective;
     [SerializeField] private TutorialObjective phase3Objective;
+    
+    [Header("Phase 4")]
+    [SerializeField] private DialogueSO phase4DialogueEntry;
+    [SerializeField] private DialogueSO phase4DialogueExit;
 
     private bool _dialogueEnded;
     private bool _objectiveCompleted;
+    private bool _powerUpChosen;
 
     private void OnEnable() => DialogueManager.OnDialogueEnded += OnDialogueEnded;
     private void OnDisable() => DialogueManager.OnDialogueEnded -= OnDialogueEnded;
 
     private void OnDialogueEnded() => _dialogueEnded = true;
+    private void OnPowerUpPicked() => _powerUpChosen = true;
 
     private void Start() => StartCoroutine(Phase1Routine());
 
@@ -163,7 +168,42 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => returnDone);
         
         // Passa para próxima fase do tutorial
-        //StartCoroutine(Phase4Routine());
+        StartCoroutine(Phase4Routine());
+    }
+
+    private IEnumerator Phase4Routine()
+    {
+        // diálogo de entrada
+        _dialogueEnded = false;
+        DialogueManager.Instance.StartDialogue(phase4DialogueEntry);
+        yield return new WaitUntil(() => _dialogueEnded);
+        
+        yield return new WaitForSeconds(0.5f);
+
+        // escolha de powerup
+        _powerUpChosen = false;
+        PowerUpManager.OnPowerUpPicked += OnPowerUpPicked;
+        GameManager.Instance.ChangeState(GameState.ChoosingPowerUp);
+        yield return new WaitUntil(() => _powerUpChosen);
+        PowerUpManager.OnPowerUpPicked -= OnPowerUpPicked;
+        
+        GameManager.Instance.ChangeState(GameState.Tutorial);
+        yield return new WaitForSeconds(0.75f);
+
+        // animação de saída
+        bool exitDone = false;
+        sceneAnimation.PlayExitAnimation(() => exitDone = true);
+        yield return new WaitUntil(() => exitDone);
+
+        // diálogo de saída
+        _dialogueEnded = false;
+        DialogueManager.Instance.StartDialogue(phase4DialogueExit);
+        yield return new WaitUntil(() => _dialogueEnded);
+
+        yield return new WaitForSeconds(0.5f);
+        
+        // próximo nível
+        CustomSceneManager.LoadNextScene();
     }
 
     private void OnObjectiveCompleted() => _objectiveCompleted = true;

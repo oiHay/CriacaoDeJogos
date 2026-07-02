@@ -22,6 +22,10 @@ public class PlayerSceneAnimation : MonoBehaviour
     [SerializeField] private float returnDuration = 1f;
     [SerializeField] private Ease returnEase = Ease.OutCubic;
 
+    public static PlayerSceneAnimation Instance { get; private set; }
+    
+    private void Awake() => Instance = this;
+    
     public void PlayEnterAnimation(Action onComplete = null)
     {
         StartCoroutine(EntryAnim(onComplete));
@@ -40,11 +44,19 @@ public class PlayerSceneAnimation : MonoBehaviour
             .OnComplete(() => onComplete?.Invoke());
     }
 
-    public void PlayExitAnimation()
+    public void PlayExitAnimation(Action onComplete)
     {
+        GameManager.Instance.ChangeState(GameState.ExitLevel);
+        
         transform.DOMoveZ(exitZ, exitDuration)
             .SetEase(exitEase)
-            .OnComplete(() => CustomSceneManager.LoadNextScene());
+            .OnComplete(() =>
+            {
+                if (onComplete != null)
+                    onComplete.Invoke();
+                else
+                    CustomSceneManager.LoadNextScene();
+            });
     }
 
     public void PlayerReturnAnimation(Action onComplete)

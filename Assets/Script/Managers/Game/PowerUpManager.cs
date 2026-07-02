@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
 {
     [SerializeField] private GameStatesEventSO gameStateEvent;
     [SerializeField] private PlayerStatsRuntimeSO playerStats;
-    [SerializeField] private PowerUpSO[] allPowerUps;
+    [SerializeField] private PowerUpSO tutorialPowerUp;
     [SerializeField] private PowerUpPanelController panelController;
-    
+
+    public static event Action OnPowerUpPicked;
+
     public static PowerUpManager Instance { get; private set; }
 
     private void Awake() => Instance = this;
@@ -23,27 +26,17 @@ public class PowerUpManager : MonoBehaviour
             Debug.LogError("PowerUpManager: panelController is not assigned in the Inspector!", this);
             return;
         }
-        
-        var options = PickRandom(3);
-        panelController.Show(options);
+
+        panelController.Show(new[] { tutorialPowerUp });
     }
 
     public void OnPowerUpChosen(PowerUpSO chosen)
     {
         playerStats.Apply(chosen);
-        CustomSceneManager.LoadNextScene();
-    }
 
-    private PowerUpSO[] PickRandom(int count)
-    {
-        var shuffled = (PowerUpSO[])allPowerUps.Clone();
-
-        for (int i = shuffled.Length - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
-        }
-
-        return shuffled[..count];
+        if (OnPowerUpPicked != null)
+            OnPowerUpPicked.Invoke();
+        else
+            CustomSceneManager.LoadNextScene();
     }
 }

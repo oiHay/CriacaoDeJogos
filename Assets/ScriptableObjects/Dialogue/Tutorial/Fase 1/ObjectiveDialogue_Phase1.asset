@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f64f1b09abd27448ea5f6837581b24, type: 3}
+  m_Name: ObjectiveDialogue_Phase1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  localizations:
+  - language: 0
+    lines:
+    - Great, that's right!
+    - First, I'll show you how to use this old scrap
+    - A circle will appear on the floor
+    - Use the WASD keys or the arrow keys to move around inside it
+    - Your first mission is to get out of the circle. Copy that, cadet?!
+    - Now, let's go! Circle around, everyone!
+  - language: 1
+    lines:
+    - "\xD3timo, isso ai"
+    - Primeiro vamos aprender os controles dessa banheira
+    - "Quando eu parar de falar, um circulo aparecer\xE1 no ch\xE3o"
+    - Use WASD ou as setinhas para se movimentar
+    - "Sua primeira miss\xE3o \xE9 sair da marca\xE7\xE3o"
+    - "Agora vai l\xE1: circulando, circulando, cambada!"

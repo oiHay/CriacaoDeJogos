@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f64f1b09abd27448ea5f6837581b24, type: 3}
+  m_Name: EntryDialogue_Phase2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  localizations:
+  - language: 1
+    lines:
+    - "Vamos, cadete, centraliza a\xED que aqui n\xE3o \xE9 a casa da m\xE3e Joana,
+      n\xE3o, hein?!"
+    - "Agora que j\xE1 ta sabendo sapatear, vamos dificultar as coisas..."
+    - Vou botar um desses patetas para correr, se segura, cadete!
+  - language: 0
+    lines:
+    - Come on, cadet, get your act together, this isn't some free-for-all, okay?!
+    - Now that you know how to tap dance, let's make things a little harder...
+    - I'm going to have one of those goofballs run. Hang on tight, cadet!
