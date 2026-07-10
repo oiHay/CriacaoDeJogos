@@ -34,3 +34,5 @@ MonoBehaviour:
     value: '[ RESET ]'
   - key: btn_menu
     value: '[ MENU]'
+  - key: PU_input
+    value: SPACE

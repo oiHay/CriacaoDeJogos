@@ -34,3 +34,5 @@ MonoBehaviour:
     value: '[ REINICIAR ]'
   - key: btn_menu
     value: '[ MENU ]'
+  - key: PU_input
+    value: "ESPA\xC7O"
