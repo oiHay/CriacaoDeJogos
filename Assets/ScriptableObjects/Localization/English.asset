@@ -36,3 +36,5 @@ MonoBehaviour:
     value: '[ MENU]'
   - key: PU_input
     value: SPACE
+  - key: card_description
+    value: dash super cool!

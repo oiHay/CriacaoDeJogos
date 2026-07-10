@@ -176,8 +176,8 @@ MonoBehaviour:
   moveSpeed: 100
   tiltAmount: 15
   tiltSpeed: 5
-  minBoundZ: -6
-  maxBoundZ: 6
+  minBoundZ: -3
+  maxBoundZ: 5
   boundX: 16
 --- !u!114 &953653247781910288
 MonoBehaviour:
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShootingBehaviour
   playerStatsSO: {fileID: 11400000, guid: 527758083e50f404dad1bfb8d6cb8997, type: 2}
-  pattern: {fileID: 11400000, guid: e26c41fad0179d34daf8365ccb181a74, type: 2}
+  pattern: {fileID: 11400000, guid: d502c1e5c10517f4f928fa12f2eeafe5, type: 2}
   projectileSpawnOffsetZ: 1
 --- !u!114 &4264763888658449643
 MonoBehaviour:
@@ -252,7 +252,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSceneAnimation
   offScreenZ: -20
-  entryZ: -4
+  entryZ: -3
   duration: 1.5
   delayToStart: 0.5
   ease: 9
+  exitZ: 12
+  exitDuration: 1.5
+  exitEase: 8
+  homePosition: {x: 0, y: 0.6, z: -4}
+  returnDuration: 1
+  returnEase: 9

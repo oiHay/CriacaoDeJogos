@@ -36,3 +36,5 @@ MonoBehaviour:
     value: '[ MENU ]'
   - key: PU_input
     value: "ESPA\xC7O"
+  - key: card_description
+    value: dash maneiro!
