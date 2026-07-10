@@ -59,6 +59,12 @@ public class GameManager : MonoBehaviour
         ChangeState(_previousState);
     }
 
+    public static void Resume()
+    {
+        if (Instance != null)
+            Instance.ResumeGame();
+    }
+
     // Scene navigation — instance wrappers so buttons can reference them in the Inspector
     public void ResetScene() => CustomSceneManager.Reset();
     public void GoToMainMenu() => CustomSceneManager.MainMenu();

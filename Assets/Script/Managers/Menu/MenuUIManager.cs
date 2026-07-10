@@ -17,15 +17,13 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private PlayerStatsRuntimeSO playerStats;
 
     private GameObject _currentPanel;
-
-    // Called by the Play button via UIButton or Button.OnClick
+    
     public void Play()
     {
         playerStats.Reset();
         CustomSceneManager.LoadNextScene();
     }
-
-    // Called by Settings/Credits buttons — pass the panel to open directly
+    
     public void OpenPanel(GameObject panel)
     {
         if (panel == null) return;
@@ -37,7 +35,7 @@ public class MenuUIManager : MonoBehaviour
         _currentPanel.SetActive(true);
     }
 
-    private void CloseCurrentPanel()
+    public void CloseCurrentPanel()
     {
         if(_currentPanel == null) return;
         

@@ -21,14 +21,16 @@ MonoBehaviour:
   - key: btn_credits
     value: "Cr\xE9ditos"
   - key: Settings_Master_Volume
-    value: Volume Master
+    value: SOM GERAL
   - key: Settings_Music_Volume
-    value: "Volume da M\xFAsica"
+    value: "VOLUME DA M\xDASICA"
   - key: Settings_SFX_Volume
-    value: Volume dos Efeitos
+    value: VOLUME DOS EFEITOS SONOROS
+  - key: Settings_Language
+    value: IDIOMAS
   - key: btn_back
-    value: Voltar
+    value: '[ VOLTAR ]'
   - key: btn_reset
-    value: Reiniciar
+    value: '[ REINICIAR ]'
   - key: btn_menu
-    value: Menu
+    value: '[ MENU ]'
