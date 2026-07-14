@@ -41,3 +41,17 @@ MonoBehaviour:
       quis augue pulvinar fringilla non id sem. Cras sit amet nisl vel quam pretium
       pretium. Suspendisse potenti. Aliquam eu quam nulla. Aliquam vel arcu nec enim
       rhoncus lacinia. Integer maximus dapibus metus. '
+  - key: credits_panel
+    value: "CR\xC9DITOS"
+  - key: developed_txt
+    value: CRIADO POR
+  - key: appreciation_txt
+    value: AGRADECIMENTOS
+  - key: appreciationmessage_txt
+    value: "Meus amigos da aula de cria\xE7\xE3o de jogos no est\xFAdio Riachuelo;
+      minha amada namorada, Lara, pelo apoio e suporte; e minha querida amiga Mabi,
+      pelas opini\xF5es e feedbacks."
+  - key: orientation_txt
+    value: ORIENTADO POR
+  - key: music_txt
+    value: "M\xDASICA"

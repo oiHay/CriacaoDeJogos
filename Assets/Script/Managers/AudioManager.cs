@@ -19,6 +19,12 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Mixer")]
     [SerializeField] private AudioMixer audioMixer;
+    
+    [Header("Mixer Groups")]
+    [SerializeField] private AudioMixerGroup musicGroup;
+
+    [Header("Sources")]
+    [SerializeField] private AudioSource musicSource;
 
     private const string MasterParam = "MasterVolume";
     private const string MusicParam  = "MusicVolume";
@@ -37,6 +43,9 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
+
+        musicSource.outputAudioMixerGroup = musicGroup;
+        musicSource.loop = true;
 
         LoadSavedVolumes();
     }
@@ -77,5 +86,13 @@ public class AudioManager : MonoBehaviour
     private float LinearToDecibel(float linear)
     {
         return Mathf.Log10(Mathf.Max(linear, 0.0001f)) * 20f;
+    }
+    
+    public void PlayMusic(AudioClip clip)
+    {
+        if (clip == null || musicSource.clip == clip) return;
+
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 }

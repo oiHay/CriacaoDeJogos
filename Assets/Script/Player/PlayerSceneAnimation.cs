@@ -18,7 +18,7 @@ public class PlayerSceneAnimation : MonoBehaviour
     [SerializeField] private Ease exitEase = Ease.InCubic;
 
     [Header("Return")] 
-    [SerializeField] private Vector3 homePosition = new Vector3(0f, 0.6f, -4f);
+    [SerializeField] private Vector3 homePosition = new Vector3(0f, 0.6f, -3f);
     [SerializeField] private float returnDuration = 1f;
     [SerializeField] private Ease returnEase = Ease.OutCubic;
 

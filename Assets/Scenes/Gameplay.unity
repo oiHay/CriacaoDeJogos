@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneInitializer
   initialState: 6
+  sceneMusic: {fileID: 8300000, guid: 342cbcea31ec6454bb35e93752a48c2b, type: 3}
 --- !u!1 &399374368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1140471308778370684, guid: 60299ff991c031f4faa06057185a3cce, type: 3}

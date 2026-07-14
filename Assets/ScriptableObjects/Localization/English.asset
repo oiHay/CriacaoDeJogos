@@ -41,3 +41,17 @@ MonoBehaviour:
       quis augue pulvinar fringilla non id sem. Cras sit amet nisl vel quam pretium
       pretium. Suspendisse potenti. Aliquam eu quam nulla. Aliquam vel arcu nec enim
       rhoncus lacinia. Integer maximus dapibus metus. '
+  - key: credits_panel
+    value: CREDITS
+  - key: developed_txt
+    value: DEVELOPED BY
+  - key: appreciation_txt
+    value: APPRECIATION
+  - key: appreciationmessage_txt
+    value: My friends from the game development class at Riachuelo Studio; my beloved
+      girlfriend, Lara, for her support; and my dear friend Mabi, for her opinions
+      and feedback.
+  - key: orientation_txt
+    value: ORIENTATION BY
+  - key: music_txt
+    value: MUSIC

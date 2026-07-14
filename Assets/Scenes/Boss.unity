@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneInitializer
   initialState: 6
+  sceneMusic: {fileID: 8300000, guid: 56bbd16d679ecee49930c3b1a613232d, type: 3}
 --- !u!1 &420434260
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   debugMode: 0
   gameStateEvent: {fileID: 11400000, guid: 737c615fe7e262746aad2c391e2f1def, type: 2}
-  settingsPanel: {fileID: 1766705373}
+  settingsPanel: {fileID: 0}
   choosingPowerUp: {fileID: 1766705372}
   gameOverPanel: {fileID: 1766705371}
 --- !u!1 &1242346655
@@ -1361,11 +1362,6 @@ GameObject:
 --- !u!1 &1766705372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2900550443551257542, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
-  m_PrefabInstance: {fileID: 1766705370}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1766705373 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8668717001484916551, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
   m_PrefabInstance: {fileID: 1766705370}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1777883514
