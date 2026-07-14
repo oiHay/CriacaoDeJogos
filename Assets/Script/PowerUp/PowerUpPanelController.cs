@@ -8,7 +8,11 @@ public class PowerUpPanelController : MonoBehaviour
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            cards[i].Setup(options[i]);
+            bool hasOption = i < options.Length;
+            cards[i].gameObject.SetActive(hasOption);
+
+            if (hasOption)
+                cards[i].Setup(options[i]);
         }
     }
 }

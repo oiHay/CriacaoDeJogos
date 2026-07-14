@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpSO
   powerUpName: Dash
   description: Dash maneiro!
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 22e72cac7163a3244ae2342074acaad1, type: 3}
   effectType: 0
   value: 0
   extraPattern: {fileID: 0}

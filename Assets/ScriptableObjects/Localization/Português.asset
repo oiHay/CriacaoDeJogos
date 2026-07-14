@@ -37,4 +37,7 @@ MonoBehaviour:
   - key: PU_input
     value: "ESPA\xC7O"
   - key: card_description
-    value: dash maneiro!
+    value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed turpis
+      quis augue pulvinar fringilla non id sem. Cras sit amet nisl vel quam pretium
+      pretium. Suspendisse potenti. Aliquam eu quam nulla. Aliquam vel arcu nec enim
+      rhoncus lacinia. Integer maximus dapibus metus. '
