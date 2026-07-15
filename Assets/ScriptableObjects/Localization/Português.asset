@@ -20,12 +20,18 @@ MonoBehaviour:
     value: "Configura\xE7\xF5es"
   - key: btn_credits
     value: "Cr\xE9ditos"
+  - key: settings_panel
+    value: "CONFIGURA\xC7\xD5ES"
+  - key: settings_audio
+    value: "\xC1UDIO"
   - key: Settings_Master_Volume
-    value: SOM GERAL
+    value: GERAL
   - key: Settings_Music_Volume
-    value: "VOLUME DA M\xDASICA"
+    value: "SOM DA M\xDASICA"
+  - key: Settings_Ambience_Volume
+    value: SOM DO AMBIENTE
   - key: Settings_SFX_Volume
-    value: VOLUME DOS EFEITOS SONOROS
+    value: SOM DOS EFEITOS SONOROS
   - key: Settings_Language
     value: IDIOMAS
   - key: btn_back
@@ -37,10 +43,8 @@ MonoBehaviour:
   - key: PU_input
     value: "ESPA\xC7O"
   - key: card_description
-    value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed turpis
-      quis augue pulvinar fringilla non id sem. Cras sit amet nisl vel quam pretium
-      pretium. Suspendisse potenti. Aliquam eu quam nulla. Aliquam vel arcu nec enim
-      rhoncus lacinia. Integer maximus dapibus metus. '
+    value: "Propulsores de movimenta\xE7\xE3o que permitem r\xE1pido deslocamento
+      ao pressionar o input de habilidade. [ESPA\xC7O]"
   - key: credits_panel
     value: "CR\xC9DITOS"
   - key: developed_txt

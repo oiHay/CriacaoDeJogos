@@ -20,10 +20,16 @@ MonoBehaviour:
     value: Settings
   - key: btn_credits
     value: Credits
+  - key: settings_panel
+    value: SETTINGS
+  - key: settings_audio
+    value: SOUND
   - key: Settings_Master_Volume
-    value: MASTER VOLUME
+    value: MASTER
   - key: Settings_Music_Volume
     value: MUSIC VOLUME
+  - key: Settings_Ambience_Volume
+    value: AMBIENCE VOLUME
   - key: Settings_SFX_Volume
     value: SOUND EFFECTS VOLUME
   - key: Settings_Language
@@ -37,10 +43,8 @@ MonoBehaviour:
   - key: PU_input
     value: SPACE
   - key: card_description
-    value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sed turpis
-      quis augue pulvinar fringilla non id sem. Cras sit amet nisl vel quam pretium
-      pretium. Suspendisse potenti. Aliquam eu quam nulla. Aliquam vel arcu nec enim
-      rhoncus lacinia. Integer maximus dapibus metus. '
+    value: 'Movement boosters that allow for quick movement when you press the ability
+      button. [SPACE]'
   - key: credits_panel
     value: CREDITS
   - key: developed_txt
