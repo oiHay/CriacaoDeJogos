@@ -23,10 +23,12 @@ public class AudioManager : MonoBehaviour
     
     [Header("Mixer Groups")]
     [SerializeField] private AudioMixerGroup musicGroup;
+    [SerializeField] private AudioMixerGroup sfxGroup;
     [SerializeField] private AudioMixerGroup ambienceGroup;
 
     [Header("Sources")]
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
 
     private const string MasterParam = "MasterVolume";
     private const string MusicParam  = "MusicVolume";
@@ -54,6 +56,8 @@ public class AudioManager : MonoBehaviour
         musicSource.outputAudioMixerGroup = musicGroup;
         musicSource.loop = true;
 
+        sfxSource.outputAudioMixerGroup = sfxGroup;
+
         LoadSavedVolumes();
     }
 
@@ -75,6 +79,7 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float value)
     {
         audioMixer.SetFloat(MusicParam, LinearToDecibel(value));
+        musicSource.mute = value <= 0f;
         PlayerPrefs.SetFloat(MusicKey, value);
         DebugMessage("Music Volume: " + value);
     }
@@ -82,6 +87,7 @@ public class AudioManager : MonoBehaviour
     public void SetSfxVolume(float value)
     {
         audioMixer.SetFloat(SfxParam, LinearToDecibel(value));
+        sfxSource.mute = value <= 0f;
         PlayerPrefs.SetFloat(SfxKey, value);
         DebugMessage("SFX Volume: " + value);
     }
@@ -89,6 +95,10 @@ public class AudioManager : MonoBehaviour
     public void SetAmbienceVolume(float value)
     {
         audioMixer.SetFloat(AmbienceParam, LinearToDecibel(value) + AmbienceTrimDb);
+        
+        foreach (var source in _ambienceSources)
+            if (source != null) source.mute = value <= 0f;
+        
         PlayerPrefs.SetFloat(AmbienceKey, value);
         DebugMessage("Ambience Volume: " + value);
     }
@@ -117,6 +127,8 @@ public class AudioManager : MonoBehaviour
         StopAmbience();
         if (clips == null) return;
 
+        bool muted = GetAmbienceVolume() <= 0f;
+
         foreach (var clip in clips)
         {
             if (clip == null) continue;
@@ -128,8 +140,9 @@ public class AudioManager : MonoBehaviour
             source.clip = clip;
             source.loop = true;
             source.outputAudioMixerGroup = ambienceGroup;
+            source.mute = muted;
             source.Play();
-            
+
             _ambienceSources.Add(source);
         }
     }
@@ -140,5 +153,18 @@ public class AudioManager : MonoBehaviour
             if (source != null) Destroy(source.gameObject);
 
         _ambienceSources.Clear();
+    }
+    
+    public void PlaySfx(AudioClip clip, float volumeScale = 1f)
+    {
+        if (clip == null) return;
+
+        sfxSource.PlayOneShot(clip, volumeScale);
+    }
+    
+    public static void PlaySound(AudioClip clip)
+    {
+        if (Instance != null)
+            Instance.PlaySfx(clip);
     }
 }
