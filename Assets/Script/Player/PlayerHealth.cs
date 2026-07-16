@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 3;
     [SerializeField] private float invincibilityDuration = 2f;
     [SerializeField] private float blinkInterval = 0.1f;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private AudioClip hitSound;
 
     public event Action<int, int> OnHealthChanged;
     public event Action OnDeath;
@@ -49,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Instantiate(hitParticle, transform.position + Vector3.forward * 0.5f, hitParticle.transform.rotation);
             cameraShake?.Shake();
+            AudioManager.PlaySound(hitSound);
             StartCoroutine(InvincibilityRoutine());
         }
     }
@@ -87,6 +93,7 @@ public class PlayerHealth : MonoBehaviour
         }
         
         CallParticle();
+        PlayRandomDeathSound();
         OnDeath?.Invoke();
         Destroy(gameObject);
     }
@@ -103,5 +110,13 @@ public class PlayerHealth : MonoBehaviour
         if (ps != null)
             ps.Play();
 
+    }
+
+    private void PlayRandomDeathSound()
+    {
+        if (deathSounds == null || deathSounds.Length == 0) return;
+
+        int index = Random.Range(0, deathSounds.Length);
+        AudioManager.PlaySound(deathSounds[index]);
     }
 }

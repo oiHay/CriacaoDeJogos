@@ -153,6 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e937f33b1f28ad6448a662d28e54c42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
-  cameraShake: {fileID: 2788035608314770437, guid: 3938a28c10afcbc419bc23e9a8233d06, type: 3}
   particlePrefab: {fileID: 4714553403420993954, guid: 54fc6238bd168194ab3c6524a3f97179, type: 3}
   hitParticle: {fileID: 5711231189016753595, guid: 8bc4f4f7b40504c41ba7052d7931fb0a, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: aa09a1644c4af834695c8dc307a35037, type: 3}
+  - {fileID: 8300000, guid: 89438849db6546b4cbc1683a8ac94cc7, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: e9a9d643c41588c43bfb7e2d3cca7ca5, type: 3}
+  - {fileID: 8300000, guid: d54228a927de9f749884e84fa7f02f36, type: 3}

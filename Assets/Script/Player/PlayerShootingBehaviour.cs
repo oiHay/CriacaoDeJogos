@@ -63,6 +63,8 @@ public class PlayerShootingBehaviour : MonoBehaviour
             spawnPos,
             Quaternion.Euler(90, 0, 0)
         );
+        
+        AudioManager.PlaySound(p.GetRandomShootSound());
 
         float speed = p.projectileSpeed;
         

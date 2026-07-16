@@ -197,6 +197,10 @@ MonoBehaviour:
   maxHealth: 5
   invincibilityDuration: 2
   blinkInterval: 0.1
+  deathSounds:
+  - {fileID: 8300000, guid: ceab2d97ebb6a004e84de2c87b5aac7b, type: 3}
+  - {fileID: 8300000, guid: 284cfa942335cec4b9ae71001a4d3408, type: 3}
+  hitSound: {fileID: 8300000, guid: eaaaafa7a0dbac140aae23c1be194cf4, type: 3}
 --- !u!114 &5603514609853704429
 MonoBehaviour:
   m_ObjectHideFlags: 0

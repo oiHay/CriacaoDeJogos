@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6e552a935b77d4684d9939443392db, type: 3}
   m_Name: EnemyBasicPattern
   m_EditorClassIdentifier: Assembly-CSharp::ShootingPatternSO
-  projectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
+  projectilePrefab: {fileID: 950397177737167955, guid: 9446b16c7a9a61748a2d06540ebae021, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: ae408613d3686ad40a4b94365ba96f52, type: 3}
   projectileDamage: 1
   projectileSpeed: 3
   projectileCount: 1

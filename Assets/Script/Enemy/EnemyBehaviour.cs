@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private GameObject particlePrefab;
     [SerializeField] private ParticleSystem hitParticle;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private AudioClip[] hitSounds;
     
     private EnemyDataSO _enemyData;
     private GameStatesEventSO _gameStateEvent;
@@ -72,6 +77,8 @@ public class EnemyBehaviour : MonoBehaviour
             spawnPos,
             pattern.projectilePrefab.transform.rotation
         );
+        
+        AudioManager.PlaySound(pattern.GetRandomShootSound());
 
         projectile.GetComponent<ProjectileBehaviour>().SetDirection(Vector3.back);
         projectile.GetComponent<ProjectileBehaviour>().Initialize(_gameStateEvent, pattern.projectileSpeed);
@@ -96,12 +103,14 @@ public class EnemyBehaviour : MonoBehaviour
         if (_currentHealth <= 0)
         {
             CallParticle();
+            PlayRandomDeathSound();
             OnEnemyDestroyed?.Invoke();
             Destroy(gameObject);
         }
         else
         {
             Instantiate(hitParticle, transform.position + Vector3.back * 0.5f, hitParticle.transform.rotation);
+            PlayRandomHitSound();
         }
     }
     
@@ -115,5 +124,21 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (ps != null)
             ps.Play();
+    }
+    
+    private void PlayRandomDeathSound()
+    {
+        if (deathSounds == null || deathSounds.Length == 0) return;
+
+        int index = Random.Range(0, deathSounds.Length);
+        AudioManager.PlaySound(deathSounds[index]);
+    }
+
+    private void PlayRandomHitSound()
+    {
+        if (hitSounds == null || hitSounds.Length == 0) return;
+
+        int index = Random.Range(0, hitSounds.Length);
+        AudioManager.PlaySound(hitSounds[index]);
     }
 }

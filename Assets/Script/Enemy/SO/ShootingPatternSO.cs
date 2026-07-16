@@ -6,6 +6,9 @@ public class ShootingPatternSO : ScriptableObject
     [Header("Prefab")]
     public GameObject projectilePrefab;
 
+    [Header("Audio")] 
+    public AudioClip[] shootSounds;
+
     [Header("Default values")]
     public int projectileDamage;
     public float projectileSpeed;
@@ -13,4 +16,11 @@ public class ShootingPatternSO : ScriptableObject
     public float offsetX; // Quão distante entre si projéteis spawnados ao mesmo tempo estão
     public float shootingInterval; // Tempo entre um tiro e outro em sequência
     public float shootingReload; //Tempo entre cada rajada completa de tiros
+
+    public AudioClip GetRandomShootSound()
+    {
+        if (shootSounds == null || shootSounds.Length == 0) return null;
+
+        return shootSounds[Random.Range(0, shootSounds.Length)];
+    }
 }
