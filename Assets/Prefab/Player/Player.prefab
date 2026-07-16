@@ -176,9 +176,9 @@ MonoBehaviour:
   moveSpeed: 100
   tiltAmount: 15
   tiltSpeed: 5
-  minBoundZ: -3
-  maxBoundZ: 5
-  boundX: 16
+  minBoundZ: -7
+  maxBoundZ: 12
+  boundX: 30
 --- !u!114 &953653247781910288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,11 +256,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSceneAnimation
   offScreenZ: -20
-  entryZ: -3
+  entryZ: -7
   duration: 1.5
   delayToStart: 0.5
   ease: 9
-  exitZ: 12
+  exitZ: 20
   exitDuration: 1.5
   exitEase: 8
   homePosition: {x: 0, y: 0.6, z: -4}

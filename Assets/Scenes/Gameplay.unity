@@ -2139,10 +2139,6 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1834799523}
-    - target: {fileID: 1703700249994989284, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
-      propertyPath: entryZ
-      value: -3
-      objectReference: {fileID: 0}
     - target: {fileID: 1782962705820078296, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2186,18 +2182,6 @@ PrefabInstance:
     - target: {fileID: 5499383584094778472, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5603514609853704429, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
-      propertyPath: pattern
-      value: 
-      objectReference: {fileID: 11400000, guid: d502c1e5c10517f4f928fa12f2eeafe5, type: 2}
-    - target: {fileID: 8270850959538406849, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
-      propertyPath: maxBoundZ
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8270850959538406849, guid: 26085edfd85f49e4d90a1a572bbe5126, type: 3}
-      propertyPath: minBoundZ
-      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
