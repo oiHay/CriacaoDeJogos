@@ -15,11 +15,7 @@ MonoBehaviour:
   languages: 0
   entries:
   - key: btn_play
-    value: Play
-  - key: btn_settings
-    value: Settings
-  - key: btn_credits
-    value: Credits
+    value: PLAY
   - key: settings_panel
     value: SETTINGS
   - key: settings_audio

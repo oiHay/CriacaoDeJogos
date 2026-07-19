@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,15 @@ public class SceneInitializer : MonoBehaviour
     [SerializeField] private AudioClip sceneMusic;
     [SerializeField] private List<AudioClip> sceneAmbience;
     
-    private void Start()
+    private IEnumerator Start()
     {
-        GameManager.Instance.ChangeState(initialState);
         AudioManager.Instance.PlayMusic(sceneMusic);
         AudioManager.Instance.PlayAmbience(sceneAmbience);
+        
+        while (SceneTransition.IsTransitioning)
+            yield return null;
+        
+        GameManager.Instance.ChangeState(initialState);
         
         if (initialState == GameState.EnterLevel)
             PlayerSceneAnimation.Instance.PlayEnterAnimation(() => GameManager.Instance.ChangeState(GameState.Playing));

@@ -9,5 +9,6 @@ public enum GameState
     GameOver,
     Tutorial,
     EnterLevel,
-    ExitLevel
+    ExitLevel,
+    Transition
 }

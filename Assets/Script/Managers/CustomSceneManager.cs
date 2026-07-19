@@ -1,4 +1,4 @@
-using System;
+ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,16 +6,16 @@ public class CustomSceneManager : MonoBehaviour
 {
     public static void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public static void Reset()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneTransition.LoadScene(2);
     }
 
     public static void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneTransition.LoadScene(0);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -57,7 +58,10 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
 
         sfxSource.outputAudioMixerGroup = sfxGroup;
+    }
 
+    private void Start()
+    {
         LoadSavedVolumes();
     }
 

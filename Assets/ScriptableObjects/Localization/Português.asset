@@ -15,11 +15,7 @@ MonoBehaviour:
   languages: 1
   entries:
   - key: btn_play
-    value: Jogar
-  - key: btn_settings
-    value: "Configura\xE7\xF5es"
-  - key: btn_credits
-    value: "Cr\xE9ditos"
+    value: JOGAR
   - key: settings_panel
     value: "CONFIGURA\xC7\xD5ES"
   - key: settings_audio

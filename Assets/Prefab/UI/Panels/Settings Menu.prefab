@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 7201801837002469688}
   - component: {fileID: 2711574218196713108}
   - component: {fileID: 7323277571032952795}
+  - component: {fileID: 4530021372975528283}
   m_Layer: 0
   m_Name: btn_menu
   m_TagString: Untagged
@@ -296,6 +297,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4530021372975528283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256786224185191408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cec83929ae4d504c8c864fbe11841da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverSound
+  btnHovered: {fileID: 8300000, guid: f3e5d5fd4d76bb6449e676934dadc2cb, type: 3}
 --- !u!1 &2260567840972395737
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +780,7 @@ GameObject:
   - component: {fileID: 5944370086390749565}
   - component: {fileID: 812076147121624538}
   - component: {fileID: 2319826970924484508}
+  - component: {fileID: 4371624846728820808}
   m_Layer: 0
   m_Name: btn_back
   m_TagString: Untagged
@@ -899,6 +914,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4371624846728820808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748399192583199074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cec83929ae4d504c8c864fbe11841da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverSound
+  btnHovered: {fileID: 8300000, guid: f3e5d5fd4d76bb6449e676934dadc2cb, type: 3}
 --- !u!1 &7381149231028422412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1123,7 @@ GameObject:
   - component: {fileID: 6901227597490231318}
   - component: {fileID: 7701620375616348642}
   - component: {fileID: 6089959683416262462}
+  - component: {fileID: 4593850253439812240}
   m_Layer: 0
   m_Name: btn_restart
   m_TagString: Untagged
@@ -1228,6 +1257,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4593850253439812240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7611356679336912543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cec83929ae4d504c8c864fbe11841da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverSound
+  btnHovered: {fileID: 8300000, guid: f3e5d5fd4d76bb6449e676934dadc2cb, type: 3}
 --- !u!1 &7863986508377577515
 GameObject:
   m_ObjectHideFlags: 0

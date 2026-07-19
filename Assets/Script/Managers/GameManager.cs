@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void PauseGame()
     {
+        if (gameStatesEvent.gameStateAtual == GameState.Transition) return;
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameStatesEvent.gameStateAtual == GameState.Paused)

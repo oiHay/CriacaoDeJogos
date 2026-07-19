@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileCollision
   explosionParticle: {fileID: 5670104516051297052, guid: 2f5e49614f9b10e4cbc6d79fc988fb7e, type: 3}
-  bounderZ: 9
+  bounderZ: 16
 --- !u!1 &8931358964556134775
 GameObject:
   m_ObjectHideFlags: 0
