@@ -11,7 +11,7 @@ public class CustomSceneManager : MonoBehaviour
 
     public static void Reset()
     {
-        SceneTransition.LoadScene(2);
+        SceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public static void MainMenu()

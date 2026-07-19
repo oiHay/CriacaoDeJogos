@@ -21,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
     public void Play()
     {
         playerStats.Reset();
+        AudioManager.Instance.StopMusic();
         CustomSceneManager.LoadNextScene();
     }
     

@@ -126,6 +126,12 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+        musicSource.clip = null;
+    }
+
     public void PlayAmbience(List<AudioClip> clips)
     {
         StopAmbience();
