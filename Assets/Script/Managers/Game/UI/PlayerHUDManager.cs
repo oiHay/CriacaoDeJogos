@@ -11,7 +11,7 @@ public class PlayerHUDManager : MonoBehaviour
 
     private void Start()
     {
-        healthBar.value = playerHealth.maxHealth;
+        healthBar.value = 1f;
     }
 
     private void UpdateHealth(int current, int max)

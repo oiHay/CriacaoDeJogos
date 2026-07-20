@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
         settingsPanel.SetActive(state == GameState.Paused);
         choosingPowerUp.SetActive(state == GameState.ChoosingPowerUp);
         gameOverPanel.SetActive(state == GameState.GameOver);
-        victoryPanel.SetActive(state == GameState.GameOver);
+        victoryPanel.SetActive(state == GameState.Victory);
     }
 
     public void ResumeGame()   => GameManager.Instance.ResumeGame();

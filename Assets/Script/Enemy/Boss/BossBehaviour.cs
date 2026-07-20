@@ -26,12 +26,22 @@ public class BossBehaviour : MonoBehaviour
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private ParticleSystem hitParticle;
 
-    [Header("Audio")] 
-    [SerializeField] private AudioClip deathSounds;
+    [Header("Audio - Health")] 
+    [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip[] hitSounds;
+    
+    [Header("Audio - Attacks")] 
+    [SerializeField] private AudioSource chargeSource; 
+    [SerializeField] private AudioClip fanChargeSound;
+    [SerializeField] private AudioClip[] fanShootSounds;
+    [SerializeField] private AudioClip laserChargeSound;
+    [SerializeField] private AudioClip laserFireSound;
+    [SerializeField] private AudioClip bombChargeSound;
+    [SerializeField] private AudioClip explosionSound;
 
     public event Action OnBossDestroyed;
     public event Action<BossPhase> OnPhaseChanged;
+    public event Action<float, float> OnHealthChanged;
 
     private float _currentHealth;
     private BossPhase _currentPhase = BossPhase.Phase1;
@@ -56,7 +66,10 @@ public class BossBehaviour : MonoBehaviour
                 break;
             
             case GameState.Paused:
+            case GameState.Victory:
+            case GameState.GameOver:
                 StopAllCoroutines();
+                StopCharge();
                 break;
         }
     }
@@ -108,8 +121,13 @@ public class BossBehaviour : MonoBehaviour
 
     private IEnumerator BasicAttack()
     {
+        PlayCharge(fanChargeSound);
+        
         yield return new WaitForSeconds(bossData.baseReloadTime);
 
+        StopCharge();
+        PlayRandomFanShootSound();
+        
         for (int i = 0; i < bossData.fanProjectileCount; i++)
         {
             float t = bossData.fanProjectileCount == 1
@@ -142,6 +160,8 @@ public class BossBehaviour : MonoBehaviour
 
     private IEnumerator IntermediateAttack()
     {
+        PlayCharge(laserChargeSound);
+        
         yield return new WaitForSeconds(bossData.intermediateChargeTime);
         
         if (_playerTransform == null) yield break;
@@ -164,6 +184,8 @@ public class BossBehaviour : MonoBehaviour
 
         if (circle != null)
         {
+            StopCharge();
+            AudioManager.PlaySound(laserFireSound);
             SpawnLaser(transform.position, circle.transform.position);
             Destroy(circle);
         }
@@ -191,6 +213,8 @@ public class BossBehaviour : MonoBehaviour
 
     private IEnumerator HardAttack()
     {
+        PlayCharge(bombChargeSound);
+        
         yield return new WaitForSeconds(bossData.hardChargeTime);
 
         List<GameObject> indicators = new();
@@ -209,6 +233,9 @@ public class BossBehaviour : MonoBehaviour
 
         yield return new WaitForSeconds(bossData.bombWarningTime);
 
+        StopCharge();
+        AudioManager.PlaySound(explosionSound);
+        
         foreach (var indicator in indicators)
         {
             if (indicator == null) continue;
@@ -223,7 +250,8 @@ public class BossBehaviour : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        _currentHealth = Mathf.Max(_currentHealth - damage, 0f);
+        OnHealthChanged?.Invoke(_currentHealth, bossData.maxHealth);
         PlayRandomHitSound();
         CheckPhaseTransition();
 
@@ -255,11 +283,16 @@ public class BossBehaviour : MonoBehaviour
         if (deathParticlePrefab != null)
         {
             GameObject fx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
-            fx.GetComponent<ParticleSystem>()?.Play();
-            AudioManager.Instance.PlaySfx(deathSounds);
+
+            var p = fx.GetComponentInChildren<ParticleSystem>();
+            if (p !=null)
+                p.Play();
+
+            AudioManager.Instance.PlaySfx(deathSound);
         }
 
         OnBossDestroyed?.Invoke();
+        
         GameManager.Instance.ChangeState(GameState.Victory);
         Destroy(gameObject);
     }
@@ -270,5 +303,27 @@ public class BossBehaviour : MonoBehaviour
 
         int index = Random.Range(0, hitSounds.Length);
         AudioManager.PlaySound(hitSounds[index]);
+    }
+    
+    private void PlayRandomFanShootSound()
+    {
+        if (fanShootSounds == null || fanShootSounds.Length == 0) return;
+
+        int index = Random.Range(0, fanShootSounds.Length);
+        AudioManager.PlaySound(fanShootSounds[index]);
+    }
+
+    private void PlayCharge(AudioClip clip)
+    {
+        if (chargeSource == null || clip == null) return;
+
+        chargeSource.clip = clip;
+        chargeSource.Play();
+    }
+
+    private void StopCharge()
+    {
+        if (chargeSource!=null)
+            chargeSource.Stop();
     }
 }
