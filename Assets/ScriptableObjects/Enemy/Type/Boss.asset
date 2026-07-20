@@ -13,27 +13,27 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::BossDataSO
   maxHealth: 100
-  fanProjectilePrefab: {fileID: 950397177737167955, guid: 4e9d65b58747cdf40acbe687f8851894, type: 3}
+  fanProjectilePrefab: {fileID: 950397177737167955, guid: 9446b16c7a9a61748a2d06540ebae021, type: 3}
   basicChargeTime: 1
-  fanProjectileCount: 5
-  fanAngle: 60
-  fanProjectileSpeed: 0.5
+  fanProjectileCount: 11
+  fanAngle: 150
+  fanProjectileSpeed: 1.75
   circleIndicatorPrefab: {fileID: 1169641794994647381, guid: 6ec3e52f2fd6cdc469fa3dd8834f6138, type: 3}
   laserPrefab: {fileID: 1058801789872476763, guid: 93138fa5224a4e14ca68a8d4bc297b55, type: 3}
-  intermediateChargeTime: 1.5
+  intermediateChargeTime: 1.25
   circleChaseTime: 3
   circleChaseSpeed: 2
   laserDuration: 1
-  laserDamage: 1
+  laserDamage: 2
   bombIndicatorPrefab: {fileID: 1169641794994647381, guid: 6ec3e52f2fd6cdc469fa3dd8834f6138, type: 3}
   bombExplosionPrefab: {fileID: 5886104631618253843, guid: a02c9e692f90a2f49834232487c4fc38, type: 3}
   hardChargeTime: 1.5
   bombCount: 4
   bombWarningTime: 2
-  bombDamage: 1
-  spawnAreaX: {x: -8, y: 8}
-  spawnAreaZ: {x: -8, y: 8}
-  phase2ReloadMultiplier: 0.75
-  phase3ReloadMultiplier: 0.5
-  baseReloadTime: 3
+  bombDamage: 3
+  spawnAreaX: {x: -20, y: 20}
+  spawnAreaZ: {x: -10, y: 3}
+  phase2ReloadMultiplier: 0.65
+  phase3ReloadMultiplier: 0.4
+  baseReloadTime: 1.75
   timeBetweenAttacks: 0.5

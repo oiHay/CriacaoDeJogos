@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6e552a935b77d4684d9939443392db, type: 3}
+  m_Name: EnemyBasicPattern+
+  m_EditorClassIdentifier: Assembly-CSharp::ShootingPatternSO
+  projectilePrefab: {fileID: 950397177737167955, guid: 9446b16c7a9a61748a2d06540ebae021, type: 3}
+  shootSounds:
+  - {fileID: 8300000, guid: ae408613d3686ad40a4b94365ba96f52, type: 3}
+  projectileDamage: 1
+  projectileSpeed: 3.25
+  projectileCount: 1
+  offsetX: 0
+  shootingInterval: 0
+  shootingReload: 1.4

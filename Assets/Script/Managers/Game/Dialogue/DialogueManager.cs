@@ -55,7 +55,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (_isTyping)
         {
-            StopCoroutine(_typingCoroutine);
+            if (_typingCoroutine != null)
+                StopCoroutine(_typingCoroutine);
+
             dialogueText.text = _lines[_currentLine];
             _isTyping = false;
             return;
@@ -99,8 +101,9 @@ public class DialogueManager : MonoBehaviour
 
     private void PlayBlip(char letter)
     {
-        float t = Mathf.Clamp01((char.ToLowerInvariant(letter) - 'a') / 25f);
+        if (voiceSource == null || !voiceSource.isActiveAndEnabled || voiceBlip == null) return;
 
+        float t = Mathf.Clamp01((char.ToLowerInvariant(letter) - 'a') / 25f);
         voiceSource.pitch = Mathf.Lerp(minPitch, maxPitch, t) + Random.Range(-0.03f, 0.03f);
         voiceSource.PlayOneShot(voiceBlip);
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BossBehaviour : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class BossBehaviour : MonoBehaviour
     [Header("VFX")] 
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private ParticleSystem hitParticle;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioClip deathSounds;
+    [SerializeField] private AudioClip[] hitSounds;
 
     public event Action OnBossDestroyed;
     public event Action<BossPhase> OnPhaseChanged;
@@ -219,6 +224,7 @@ public class BossBehaviour : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        PlayRandomHitSound();
         CheckPhaseTransition();
 
         if (_currentHealth <= 0)
@@ -250,9 +256,19 @@ public class BossBehaviour : MonoBehaviour
         {
             GameObject fx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
             fx.GetComponent<ParticleSystem>()?.Play();
+            AudioManager.Instance.PlaySfx(deathSounds);
         }
 
         OnBossDestroyed?.Invoke();
+        GameManager.Instance.ChangeState(GameState.Victory);
         Destroy(gameObject);
+    }
+
+    private void PlayRandomHitSound()
+    {
+        if (hitSounds == null || hitSounds.Length == 0) return;
+
+        int index = Random.Range(0, hitSounds.Length);
+        AudioManager.PlaySound(hitSounds[index]);
     }
 }

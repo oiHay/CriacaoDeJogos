@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc34135e707308409b823f8ba081285, type: 3}
+  m_Name: W-Level_2 - 2
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSO
+  formationLayout: {fileID: 11400000, guid: b4644b0e09351fa428c25dfaf0f589d2, type: 2}
+  formationSpeed: 5.3
+  spawnEntries:
+  - enemyData: {fileID: 11400000, guid: 2f7efba71bc27424a91386045b4ba907, type: 2}
+    quantity: 2
