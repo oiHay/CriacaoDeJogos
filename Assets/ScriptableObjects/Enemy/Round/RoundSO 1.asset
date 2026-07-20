@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc228c91453aad4f9ade820453e7d72, type: 3}
-  m_Name: PlayerStats
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsRuntimeSO
-  hasDash: 1
-  explosionChance: 0
-  extraPatterns: []
+  m_Script: {fileID: 11500000, guid: 9bdd35c3ab6583846a37a86d41b197a1, type: 3}
+  m_Name: RoundSO 1
+  m_EditorClassIdentifier: Assembly-CSharp::RoundSO
+  waves:
+  - {fileID: 11400000, guid: 458139aa0e7ba4a4dbaadb06d809f133, type: 2}
+  waveInterval: 5

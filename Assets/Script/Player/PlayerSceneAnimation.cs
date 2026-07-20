@@ -22,6 +22,10 @@ public class PlayerSceneAnimation : MonoBehaviour
     [SerializeField] private float returnDuration = 1f;
     [SerializeField] private Ease returnEase = Ease.OutCubic;
 
+    [Header("Sound")] 
+    [SerializeField] private AudioClip entryAudio;
+    [SerializeField] private AudioClip exitAudio;
+
     public static PlayerSceneAnimation Instance { get; private set; }
     
     private void Awake() => Instance = this;
@@ -39,6 +43,8 @@ public class PlayerSceneAnimation : MonoBehaviour
         startPos.z = offScreenZ;
         transform.position = startPos;
 
+        AudioManager.Instance.PlaySfx(entryAudio);
+        
         transform.DOMoveZ(entryZ, duration)
             .SetEase(ease)
             .OnComplete(() => onComplete?.Invoke());
@@ -47,6 +53,8 @@ public class PlayerSceneAnimation : MonoBehaviour
     public void PlayExitAnimation(Action onComplete)
     {
         GameManager.Instance.ChangeState(GameState.ExitLevel);
+        
+        AudioManager.Instance.PlaySfx(exitAudio);
         
         transform.DOMoveZ(exitZ, exitDuration)
             .SetEase(exitEase)

@@ -243,6 +243,8 @@ MonoBehaviour:
   dashForce: 50
   dashDuration: 0.15
   dashCooldown: 1
+  dashSound: {fileID: 8300000, guid: 3c7628d1529713e4cbf0c901db8f5d70, type: 3}
+  dashCooldownSound: {fileID: 8300000, guid: 8becb55940a064b42b35aa9dde3a63c9, type: 3}
 --- !u!114 &1703700249994989284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,3 +268,5 @@ MonoBehaviour:
   homePosition: {x: 0, y: 0.6, z: -4}
   returnDuration: 1
   returnEase: 9
+  entryAudio: {fileID: 8300000, guid: 18591b6183617f64daad107c7c013d08, type: 3}
+  exitAudio: {fileID: 8300000, guid: a67761c64c0f0904bb75ee6bf4abf952, type: 3}

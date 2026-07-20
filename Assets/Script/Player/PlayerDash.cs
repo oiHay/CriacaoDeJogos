@@ -7,6 +7,9 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashDuration = 0.15f;
     [SerializeField] private float dashCooldown = 1f;
 
+    [SerializeField] private AudioClip dashSound;
+    [SerializeField] private AudioClip dashCooldownSound;
+
     private PlayerHealth _health;
     private Rigidbody _rb;
     private bool _canDash = true;
@@ -22,7 +25,13 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        if(!_isGameActive || !_canDash) return;
+        if (!_isGameActive || !_canDash)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                AudioManager.Instance.PlaySfx(dashCooldownSound);
+            
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
             StartCoroutine(DashRoutine());
@@ -37,6 +46,8 @@ public class PlayerDash : MonoBehaviour
         if (dir == Vector3.zero) dir = Vector3.forward;
 
         _rb.AddForce(dir * dashForce, ForceMode.Impulse);
+        
+        AudioManager.Instance.PlaySfx(dashSound);
 
         yield return new WaitForSeconds(dashDuration);
         _health.SetInvulnerable(false);

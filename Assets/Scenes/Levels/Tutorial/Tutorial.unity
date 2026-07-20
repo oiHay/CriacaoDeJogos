@@ -327,7 +327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Genral Bezerra
+  m_text: General Bezerra
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7690ab2c28a837642bcf609009cfd82b, type: 2}
   m_sharedMaterial: {fileID: -5750916076513769250, guid: 7690ab2c28a837642bcf609009cfd82b, type: 2}
