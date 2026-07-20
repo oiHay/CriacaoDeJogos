@@ -7,6 +7,7 @@ public enum GameState
     Playing,
     ChoosingPowerUp,
     GameOver,
+    Victory,
     Tutorial,
     EnterLevel,
     ExitLevel,

@@ -1292,6 +1292,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 1095266347}
   choosingPowerUp: {fileID: 1766705372}
   gameOverPanel: {fileID: 1766705371}
+  victoryPanel: {fileID: 1766705373}
 --- !u!82 &1184807570 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6205701271864747111, guid: c32827bb22b14594b80e390ca31db900, type: 3}
@@ -1706,6 +1707,11 @@ GameObject:
 --- !u!1 &1766705372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2900550443551257542, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
+  m_PrefabInstance: {fileID: 1766705370}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1766705373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2314101636573284781, guid: 60299ff991c031f4faa06057185a3cce, type: 3}
   m_PrefabInstance: {fileID: 1766705370}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1766705378 stripped

@@ -253,6 +253,7 @@ public class BossBehaviour : MonoBehaviour
         }
 
         OnBossDestroyed?.Invoke();
+        GameManager.Instance.ChangeState(GameState.Victory);
         Destroy(gameObject);
     }
 }
