@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,6 +16,13 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Typewriter")] 
     [SerializeField] private float letterDelay = 0.05f;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioSource voiceSource;
+    [SerializeField] private AudioClip voiceBlip;
+    [SerializeField, Range(0.5f, 1.5f)] private float minPitch = 0.85f;
+    [SerializeField, Range(0.5f, 1.5f)] private float maxPitch = 1.2f;
+    [SerializeField] private int lettersPerBlip = 2;
 
     private string[] _lines;
     private int _currentLine;
@@ -73,13 +82,27 @@ public class DialogueManager : MonoBehaviour
         _isTyping = true;
         dialogueText.text = string.Empty;
 
+        int letterCount = 0;
+
         foreach (char letter in line)
         {
             dialogueText.text += letter;
+
+            if (char.IsLetter(letter) && letterCount++ % lettersPerBlip == 0)
+                PlayBlip(letter);
+            
             yield return new WaitForSecondsRealtime(letterDelay);
         }
 
         _isTyping = false;
+    }
+
+    private void PlayBlip(char letter)
+    {
+        float t = Mathf.Clamp01((char.ToLowerInvariant(letter) - 'a') / 25f);
+
+        voiceSource.pitch = Mathf.Lerp(minPitch, maxPitch, t) + Random.Range(-0.03f, 0.03f);
+        voiceSource.PlayOneShot(voiceBlip);
     }
 
     private void EndDialogue()

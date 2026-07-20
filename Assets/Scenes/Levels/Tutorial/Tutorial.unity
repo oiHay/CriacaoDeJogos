@@ -1061,6 +1061,11 @@ MonoBehaviour:
   dialoguePanel: {fileID: 2063282398}
   dialogueText: {fileID: 1841981811}
   letterDelay: 0.05
+  voiceSource: {fileID: 1184807570}
+  voiceBlip: {fileID: 8300000, guid: 50412c8628ee3f24fbc6beafd6a5c443, type: 3}
+  minPitch: 0.85
+  maxPitch: 1.2
+  lettersPerBlip: 2
 --- !u!4 &820593835
 Transform:
   m_ObjectHideFlags: 0
@@ -1287,6 +1292,11 @@ MonoBehaviour:
   settingsPanel: {fileID: 1095266347}
   choosingPowerUp: {fileID: 1766705372}
   gameOverPanel: {fileID: 1766705371}
+--- !u!82 &1184807570 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6205701271864747111, guid: c32827bb22b14594b80e390ca31db900, type: 3}
+  m_PrefabInstance: {fileID: 471300621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1307695198
 GameObject:
   m_ObjectHideFlags: 0
